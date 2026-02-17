@@ -2,133 +2,428 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home by NKM | Calm, Functional Home Design</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Home by NKM offers calm, elevated home preparation, organization, and styling services that help your space feel clear, intentional, and ready for what is next." />
+  <title>Home by NKM | Calm, Elevated Home Design</title>
 
   <style>
+    :root {
+      --bg: #f4f1ec;
+      --surface: #fffcf8;
+      --surface-alt: #f8f4ee;
+      --text: #1f2422;
+      --muted: #4f5954;
+      --line: #d8d1c5;
+      --accent: #293833;
+      --accent-soft: #dce6e1;
+      --max-width: 72rem;
+      --radius: 1rem;
+      --shadow: 0 12px 32px rgba(20, 28, 25, 0.08);
+      --space-1: clamp(0.5rem, 1.3vw, 0.75rem);
+      --space-2: clamp(0.75rem, 1.8vw, 1.1rem);
+      --space-3: clamp(1rem, 2.2vw, 1.4rem);
+      --space-4: clamp(1.4rem, 2.8vw, 2rem);
+      --space-5: clamp(2rem, 4vw, 2.8rem);
+      --space-6: clamp(2.8rem, 5vw, 4rem);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f9f9f8;
-      color: #222;
-      line-height: 1.7;
+      font-family: "Inter", "Avenir Next", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8f5ef 0%, var(--bg) 100%);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 56px 24px;
+
+    a {
+      color: inherit;
     }
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 500;
-      margin-bottom: 16px;
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: #fff;
+      color: #000;
+      padding: 0.5rem 0.75rem;
+      z-index: 999;
     }
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 56px;
-      margin-bottom: 16px;
-      font-weight: 500;
+
+    .skip-link:focus {
+      left: 0.75rem;
+      top: 0.75rem;
+      border: 2px solid #000;
     }
-    p {
-      max-width: 720px;
-      font-size: 1.05rem;
-    }
-    ul, ol {
-      max-width: 720px;
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-    .card {
-      background: #ffffff;
-      padding: 32px;
-      border-radius: 10px;
-      margin-top: 32px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.05);
-    }
-    .cta {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 14px 22px;
-      background: #222;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 0.95rem;
-    }
+
+    header,
+    main,
     footer {
-      margin-top: 72px;
-      font-size: 0.85rem;
-      color: #777;
+      width: min(var(--max-width), calc(100% - 2.5rem));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: var(--space-5) 0 var(--space-4);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-5);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-3);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .hero {
+      background: rgba(255, 252, 248, 0.74);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 0.25rem);
+      padding: var(--space-6);
+      box-shadow: var(--shadow);
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.8vw, 3.35rem);
+      max-width: 20ch;
+      margin-bottom: var(--space-3);
+      font-weight: 600;
+    }
+
+    .intro {
+      font-size: clamp(1.08rem, 1.9vw, 1.3rem);
+      max-width: 62ch;
+      color: #2f3834;
+      margin: 0;
+    }
+
+    .actions {
+      margin-top: var(--space-4);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.85rem 1.3rem;
+      border-radius: 0.65rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button-secondary {
+      border-color: #a7b4af;
+      color: #2f3e38;
+      background: #f2f6f4;
+    }
+
+    main {
+      padding-bottom: var(--space-6);
+    }
+
+    .section {
+      margin-top: var(--space-6);
+    }
+
+    .section h2 {
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      margin-bottom: var(--space-2);
+      font-weight: 560;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin: 0;
+      max-width: 65ch;
+    }
+
+    .cards {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .cards.services {
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-4);
+      box-shadow: 0 8px 24px rgba(39, 48, 43, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1.08rem;
+      margin-bottom: var(--space-1);
+      font-weight: 600;
+    }
+
+    .card p {
+      margin: 0;
+      color: #404944;
+    }
+
+    .steps {
+      list-style: none;
+      margin: var(--space-4) 0 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-3);
+      counter-reset: step;
+    }
+
+    .steps li {
+      counter-increment: step;
+      background: var(--surface-alt);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-3) var(--space-4);
+      position: relative;
+      padding-left: calc(var(--space-5) + 0.5rem);
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: var(--space-3);
+      top: var(--space-3);
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+    }
+
+    .steps strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 1.03rem;
+    }
+
+    .trust {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    }
+
+    .trust-item {
+      background: #f7f3ed;
+      border-radius: var(--radius);
+      border: 1px solid #d9d2c8;
+      padding: var(--space-3);
+    }
+
+    .consultation {
+      margin-top: var(--space-6);
+      background: #212d29;
+      color: #f7f6f3;
+      border-radius: calc(var(--radius) + 0.2rem);
+      padding: var(--space-5);
+      border: 1px solid #33413d;
+    }
+
+    .consultation h2 {
+      margin-bottom: var(--space-2);
+    }
+
+    .consultation p {
+      margin-top: 0;
+      margin-bottom: var(--space-3);
+      color: #dce2df;
+      max-width: 60ch;
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 26rem;
+      border: 1px solid #54645e;
+      border-radius: 0.8rem;
+      background: #fff;
+    }
+
+    footer {
+      padding: var(--space-5) 0;
+      color: #5a625e;
+      border-top: 1px solid #d2cabf;
+      font-size: 0.93rem;
+      margin-top: var(--space-6);
+    }
+
+    @media (max-width: 43rem) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+      }
+
+      .hero,
+      .consultation {
+        padding: var(--space-4);
+      }
+
+      .steps li {
+        padding-left: var(--space-4);
+      }
+
+      .steps li::before {
+        position: static;
+        margin-bottom: 0.6rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Calm, Functional Homes — Thoughtfully Designed</h1>
-    <p>
-      Home by NKM helps homeowners create beautiful, intentional spaces that feel lived in,
-      not overwhelming — whether preparing to sell or simply refining how home feels.
-    </p>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div class="card">
-      <h2>About Home by NKM</h2>
-      <p>
-        Home by NKM was created from a passion for home design, organization, and real estate —
-        paired with a healthcare background that values function, well-being, and thoughtful care.
-      </p>
-      <p>
-        Every space is approached with intention and attention to detail, with the goal of creating
-        homes that feel calm, practical, and truly lived in.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>Services</h2>
-      <ul>
-        <li><strong>Pre-Listing Preparation</strong> — Strategic guidance to help homes show their best.</li>
-        <li><strong>Home Organization</strong> — Detailed, functional organization designed for real life.</li>
-        <li><strong>Staging & Styling</strong> — Thoughtful styling that enhances flow and livability.</li>
-        <li><strong>Interior Design Support</strong> — Timeless, elevated design guidance.</li>
+  <header>
+    <nav aria-label="Primary">
+      <div class="brand">Home by NKM</div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#trust">Why clients choose us</a></li>
       </ul>
-    </div>
+    </nav>
 
-    <div class="card">
-      <h2>How It Works</h2>
-      <ol>
-        <li>Initial consultation to understand your goals, timeline, and space.</li>
-        <li>Clear, actionable recommendations tailored to your home.</li>
-        <li>Hands-on support to create a calm, functional, and beautiful result.</li>
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Calm, elevated homes designed with intention.</h1>
+      <p class="intro">
+        Home by NKM partners with homeowners to create spaces that feel clear, functional, and beautifully lived in—whether you are preparing to sell or refining how home supports your everyday life.
+      </p>
+      <div class="actions">
+        <a class="button button-primary" href="#consultation">Request a consultation</a>
+        <a class="button button-secondary" href="#process">See the process</a>
+      </div>
+    </section>
+  </header>
+
+  <main id="main-content">
+    <section class="section" id="services" aria-labelledby="services-title">
+      <h2 id="services-title">Services curated for clarity and impact</h2>
+      <p class="section-intro">Every engagement is tailored to your space, timeline, and goals with a focus on calm outcomes that look beautiful and function effortlessly.</p>
+      <div class="cards services">
+        <article class="card">
+          <h3>Pre-listing preparation</h3>
+          <p>Strategic edits and room-by-room guidance to help your home present at its strongest from the first showing.</p>
+        </article>
+        <article class="card">
+          <h3>Home organization</h3>
+          <p>Systems built for real life so your spaces stay easy to maintain, intentional, and stress-reducing.</p>
+        </article>
+        <article class="card">
+          <h3>Staging and styling</h3>
+          <p>Refined styling that improves flow, highlights key features, and creates a warm, aspirational impression.</p>
+        </article>
+        <article class="card">
+          <h3>Interior design support</h3>
+          <p>Timeless material and layout guidance to bring coherence and elevated comfort to each room.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="process" aria-labelledby="process-title">
+      <h2 id="process-title">A thoughtful, simple process</h2>
+      <p class="section-intro">You get a clear plan, confident guidance, and support at each phase—without overwhelm.</p>
+      <ol class="steps">
+        <li>
+          <strong>Discover</strong>
+          We begin with a focused consultation to understand your priorities, constraints, and vision for your home.
+        </li>
+        <li>
+          <strong>Design the plan</strong>
+          You receive practical recommendations with priorities, styling direction, and next steps tailored to your timeline.
+        </li>
+        <li>
+          <strong>Implement with support</strong>
+          Together we execute the highest-impact changes to create a home that feels calm, functional, and elevated.
+        </li>
       </ol>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>Request a Consultation</h2>
+    <section class="section" id="trust" aria-labelledby="trust-title">
+      <h2 id="trust-title">Built on trust, care, and real expertise</h2>
+      <p class="section-intro">Our work combines design sensibility with practical understanding of how people actually live and move through their homes.</p>
+      <div class="trust">
+        <article class="trust-item">
+          <h3>Healthcare-informed lens</h3>
+          <p>Function, wellbeing, and thoughtful routines are integrated into every design recommendation.</p>
+        </article>
+        <article class="trust-item">
+          <h3>Detail-driven execution</h3>
+          <p>From first walkthrough to final styling pass, decisions are intentional and tailored to your space.</p>
+        </article>
+        <article class="trust-item">
+          <h3>Calm communication</h3>
+          <p>Clear expectations, transparent steps, and a supportive collaborative process keep projects steady.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="consultation" id="consultation" aria-labelledby="consultation-title">
+      <h2 id="consultation-title">Start your consultation</h2>
       <p>
-        If you’re preparing to sell or looking to bring more clarity and calm into your home,
-        I’d love to connect.
+        Share a few details about your home and goals. We will follow up with next steps and availability.
       </p>
 
-      <!-- Replace the URL below with your Tally form -->
-      <iframe 
+      <iframe
         data-tally-src="https://tally.so/r/XXXXXX"
         loading="lazy"
-        width="100%"
-        height="420"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Home by NKM Inquiry">
+        title="Home by NKM inquiry form">
       </iframe>
       <script async src="https://tally.so/widgets/embed.js"></script>
-    </div>
+    </section>
+  </main>
 
-    <footer>
-      © 2026 · Home by NKM
-    </footer>
-  </div>
+  <footer>
+    © 2026 Home by NKM · Intentional homes for everyday living
+  </footer>
 </body>
 </html>
