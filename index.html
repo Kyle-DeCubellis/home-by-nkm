@@ -1,563 +1,645 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful styling, organization, and design support for homeowners and real estate agents." />
-  <title>Home by NKM | Calm, Functional, Sell-Ready Homes</title>
-
-  <style>
-    :root {
-      --color-bg: #f5f1ea;
-      --color-surface: #fffdfa;
-      --color-surface-soft: #f8f3eb;
-      --color-ink: #1e2421;
-      --color-muted: #4e5752;
-      --color-line: #d8d0c3;
-      --color-accent: #3f5b53;
-      --color-accent-soft: #e4ede8;
-      --color-white: #ffffff;
-
-      --space-0: clamp(0.25rem, 0.2rem + 0.2vw, 0.35rem);
-      --space-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.7rem);
-      --space-2: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
-      --space-3: clamp(1rem, 0.9rem + 0.5vw, 1.35rem);
-      --space-4: clamp(1.5rem, 1.25rem + 1vw, 2rem);
-      --space-5: clamp(2rem, 1.6rem + 1.6vw, 3rem);
-      --space-6: clamp(2.5rem, 1.9rem + 2.5vw, 4.25rem);
-      --space-7: clamp(3rem, 2.2rem + 3.2vw, 5.25rem);
-
-      --type-body: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
-      --type-small: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
-      --type-h1: clamp(1.95rem, 1.35rem + 3.2vw, 3.4rem);
-      --type-h2: clamp(1.4rem, 1.2rem + 1.1vw, 2rem);
-      --type-h3: clamp(1.06rem, 1rem + 0.45vw, 1.24rem);
-
-      --radius-sm: 0.7rem;
-      --radius-md: 1rem;
-      --radius-lg: 1.5rem;
-      --shadow-soft: 0 10px 28px rgba(29, 38, 33, 0.06);
-      --shadow-lift: 0 16px 40px rgba(29, 38, 33, 0.08);
-
-      --max-content: 72rem;
-      --max-copy: 66ch;
-      --section-gap: var(--space-6);
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 1rem;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: var(--type-body);
-      line-height: 1.65;
-      color: var(--color-ink);
-      background: linear-gradient(180deg, #faf7f2 0%, var(--color-bg) 100%);
-      text-rendering: optimizeLegibility;
-    }
-
-    h1, h2, h3 {
-      margin: 0;
-      line-height: 1.2;
-      letter-spacing: -0.012em;
-      text-wrap: balance;
-    }
-
-    h1 { font-size: var(--type-h1); }
-    h2 { font-size: var(--type-h2); }
-    h3 { font-size: var(--type-h3); }
-
-    p { margin: 0; max-width: var(--max-copy); }
-
-    a {
-      color: inherit;
-      text-decoration-thickness: 1.5px;
-      text-underline-offset: 0.16em;
-    }
-
-    :focus-visible {
-      outline: 3px solid #2c4a41;
-      outline-offset: 3px;
-      border-radius: 0.35rem;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -100vw;
-      top: 0;
-      background: var(--color-white);
-      padding: var(--space-2) var(--space-3);
-      z-index: 100;
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-sm);
-    }
-
-    .skip-link:focus-visible {
-      left: var(--space-2);
-      top: var(--space-2);
-    }
-
-    .container {
-      width: min(var(--max-content), calc(100% - 2rem));
-      margin-inline: auto;
-    }
-
-    .site-header {
-      padding: var(--space-4) 0 var(--space-5);
-    }
-
-    .top-nav {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-3);
-      margin-bottom: var(--space-5);
-    }
-
-    .brand {
-      font-size: var(--type-small);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
-      color: var(--color-muted);
-      font-size: var(--type-small);
-    }
-
-    .nav-links a { text-decoration-color: #9ba8a1; }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(130deg, rgba(255, 255, 255, 0.95), rgba(248, 243, 235, 0.9));
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: var(--space-5);
-      display: grid;
-      gap: var(--space-3);
-      isolation: isolate;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: -30% -10% auto auto;
-      width: clamp(10rem, 34vw, 18rem);
-      aspect-ratio: 1;
-      border-radius: 999px;
-      background: radial-gradient(circle at center, rgba(212, 226, 218, 0.8), rgba(212, 226, 218, 0));
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: var(--type-small);
-      color: #344740;
-      background: var(--color-accent-soft);
-      border: 1px solid #bfd0c8;
-      border-radius: 999px;
-      padding: 0.35rem 0.75rem;
-      width: fit-content;
-      font-weight: 600;
-    }
-
-    .hero p { color: #2f3a35; }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      align-items: center;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-sm);
-      padding: 0.82rem 1.15rem;
-      text-decoration: none;
-      font-weight: 650;
-      border: 1px solid transparent;
-      font-size: var(--type-small);
-      transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(26, 37, 32, 0.11);
-    }
-
-    .button-primary {
-      background: var(--color-accent);
-      color: var(--color-white);
-      border-color: #3a524b;
-    }
-
-    .button-primary:hover { background: #354e47; }
-
-    .button-secondary {
-      background: #eff4f1;
-      border-color: #afbeb8;
-      color: #25342f;
-    }
-
-    .button-secondary:hover {
-      background: #e5ede9;
-      border-color: #9caea7;
-    }
-
-    main { padding-bottom: var(--space-7); }
-
-    .section {
-      margin-top: var(--section-gap);
-      display: grid;
-      gap: var(--space-3);
-    }
-
-    .section-intro { color: var(--color-muted); }
-
-    .grid {
-      display: grid;
-      gap: var(--space-3);
-      grid-template-columns: 1fr;
-    }
-
-    .card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      padding: var(--space-4);
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lift);
-    }
-
-    .card p { color: #3e4843; }
-
-    .feature-points {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: var(--space-2);
-    }
-
-    .feature-points li {
-      border-left: 2px solid #adbbb5;
-      padding-left: var(--space-2);
-      color: #3c4641;
-    }
-
-    .process-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: var(--space-3);
-      counter-reset: steps;
-    }
-
-    .process-list li {
-      counter-increment: steps;
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-md);
-      background: var(--color-surface-soft);
-      padding: var(--space-4);
-      position: relative;
-      padding-left: 3.5rem;
-    }
-
-    .process-list li::before {
-      content: counter(steps);
-      position: absolute;
-      left: 1rem;
-      top: 1.2rem;
-      width: 1.7rem;
-      height: 1.7rem;
-      border-radius: 50%;
-      background: var(--color-accent-soft);
-      color: #244039;
-      font-weight: 800;
-      display: grid;
-      place-items: center;
-      font-size: 0.85rem;
-    }
-
-    .trust-wrap {
-      display: grid;
-      gap: var(--space-3);
-    }
-
-    .quote {
-      font-style: italic;
-      color: #303b36;
-      border-left: 3px solid #9eb3a9;
-      padding-left: var(--space-3);
-      margin: 0;
-    }
-
-    .expect-list {
-      margin: 0;
-      padding-left: 1.15rem;
-      color: #3f4944;
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .cta-banner {
-      margin-top: var(--space-6);
-      background: #2b3a35;
-      color: #f7f8f6;
-      border: 1px solid #3f4f49;
-      border-radius: var(--radius-lg);
-      padding: var(--space-4);
-      display: grid;
-      gap: var(--space-3);
-    }
-
-    .cta-banner p { color: #dce4df; }
-
-    .contact {
-      margin-top: var(--space-6);
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: var(--space-5);
-      display: grid;
-      gap: var(--space-3);
-    }
-
-    form {
-      display: grid;
-      gap: var(--space-3);
-      margin-top: var(--space-1);
-    }
-
-    .field {
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    label { font-weight: 600; }
-
-    input, textarea {
-      width: 100%;
-      border: 1px solid #b7c1bc;
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 0.85rem;
-      font: inherit;
-      background: #fff;
-      color: #1e2723;
-    }
-
-    textarea {
-      min-height: 8.25rem;
-      resize: vertical;
-    }
-
-    .helper {
-      color: var(--color-muted);
-      font-size: var(--type-small);
-    }
-
-    footer {
-      border-top: 1px solid var(--color-line);
-      color: var(--color-muted);
-      padding: var(--space-5) 0;
-      margin-top: var(--space-6);
-      font-size: var(--type-small);
-    }
-
-    @media (min-width: 46rem) {
-      .site-header { padding-top: var(--space-5); }
-      .hero { padding: var(--space-6); gap: var(--space-4); }
-      .grid.services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .trust-wrap { grid-template-columns: 1.2fr 1fr 1fr; }
-      .cta-banner { grid-template-columns: 1fr auto; align-items: center; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <header class="site-header container">
-    <nav class="top-nav" aria-label="Primary">
-      <div class="brand">Home by NKM</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <section class="hero" aria-labelledby="hero-title">
-      <span class="eyebrow">For homeowners + real estate agents</span>
-      <h1 id="hero-title">Thoughtful home preparation that supports daily wellbeing and confident listing decisions.</h1>
-      <p>
-        Home by NKM helps busy households and agent partners make practical, high-impact updates. You get clear priorities, detail-oriented guidance, and a home that feels calm to live in and clear to present.
-      </p>
-      <div class="actions">
-        <a class="button button-primary" href="#contact">Request a Consultation</a>
-        <a class="button button-secondary" href="#process">View the process</a>
-      </div>
-    </section>
-  </header>
-
-  <main id="main-content" class="container">
-    <section class="section" id="about" aria-labelledby="about-title">
-      <h2 id="about-title">Why Home by NKM</h2>
-      <p class="section-intro">
-        Home by NKM was shaped by a healthcare perspective: environment affects how people feel, think, and move through their day. The goal is not only a beautiful result, but a home that reduces friction and supports the people inside it.
-      </p>
-      <div class="card">
-        <h3>Function and wellbeing, handled with care</h3>
-        <ul class="feature-points">
-          <li>Recommendations are grounded in routine: flow, storage, and sensory calm.</li>
-          <li>Every room is approached with respect for your timeline, budget, and energy.</li>
-          <li>The final look is intentional and warm without feeling over-styled.</li>
-        </ul>
-      </div>
-      <div class="actions">
-        <a class="button button-primary" href="#contact">Start with a no-pressure consultation</a>
-      </div>
-    </section>
-
-    <section class="section" id="services" aria-labelledby="services-title">
-      <h2 id="services-title">Services</h2>
-      <p class="section-intro">Tailored support based on your goals, timeline, and how you want your home to function day-to-day.</p>
-      <div class="grid services">
-        <article class="card">
-          <h3>Pre-listing preparation</h3>
-          <p>Strategic home edits and walkthrough recommendations to help your property show clearly and feel cared for.</p>
-        </article>
-        <article class="card">
-          <h3>Home organization</h3>
-          <p>Calm systems and decluttering support designed for ongoing use, not temporary visual fixes.</p>
-        </article>
-        <article class="card">
-          <h3>Staging + styling</h3>
-          <p>Thoughtful finishing layers that support flow, warmth, and buyer-ready presentation.</p>
-        </article>
-        <article class="card">
-          <h3>Interior design support</h3>
-          <p>Targeted guidance on layout, finishes, and furnishings to maintain a cohesive, timeless look.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="process" aria-labelledby="process-title">
-      <h2 id="process-title">A structured, reassuring process</h2>
-      <p class="section-intro">Clear communication, practical pacing, and thoughtful next steps at every point.</p>
-      <ol class="process-list">
-        <li><strong>Initial conversation.</strong> We review your goals, timeline, and where the home currently feels stuck.</li>
-        <li><strong>Prioritized recommendations.</strong> You receive a clear plan with realistic actions and sequencing.</li>
-        <li><strong>Guided implementation.</strong> We support decisions and execution so progress feels steady and manageable.</li>
-        <li><strong>Final refinements.</strong> We complete small details that bring calm, cohesion, and readiness.</li>
-      </ol>
-    </section>
-
-    <section class="section" aria-labelledby="trust-title">
-      <h2 id="trust-title">Trust</h2>
-      <div class="trust-wrap">
-        <article class="card">
-          <h3>Client words (placeholder)</h3>
-          <p class="quote">“NKM made our home feel peaceful, polished, and ready to list in a way that still felt like us.”</p>
-          <p class="quote">“The process was clear and supportive. Every change had purpose, and we always knew the next step.”</p>
-        </article>
-        <article class="card">
-          <h3>Service area</h3>
-          <p>Serving [City/Region placeholder] and surrounding communities.</p>
-        </article>
-        <article class="card">
-          <h3>What to expect</h3>
-          <ul class="expect-list">
-            <li>Response within 1–2 business days</li>
-            <li>Transparent recommendations and scope</li>
-            <li>Respectful, detail-oriented in-home support</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="cta-banner" aria-label="Consultation prompt">
-      <div>
-        <h2>Ready for thoughtful next steps?</h2>
-        <p>One conversation is enough to understand fit, options, and timing—no pressure.</p>
-      </div>
-      <a class="button button-primary" href="#contact">Request a Consultation</a>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Consultation</h2>
-      <p class="section-intro">
-        Share a few details below and your default email app will open a pre-filled message. You can keep it brief—we will guide thoughtful next steps from there.
-      </p>
-
-      <form action="mailto:hello@homebynkm.com" method="post" enctype="text/plain">
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="Name" type="text" autocomplete="name" required />
-        </div>
-
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="Email" type="email" autocomplete="email" required />
-        </div>
-
-        <div class="field">
-          <label for="phone">Phone (optional)</label>
-          <input id="phone" name="Phone" type="tel" autocomplete="tel" />
-        </div>
-
-        <div class="field">
-          <label for="message">What would you like support with?</label>
-          <textarea id="message" name="Message" required></textarea>
-        </div>
-
-        <div class="actions">
-          <button class="button button-primary" type="submit">Send Inquiry</button>
-          <a href="#" class="button button-secondary" aria-disabled="true">Prefer to schedule? Scheduling link coming soon.</a>
-        </div>
-      </form>
-      <p class="helper">No pressure and no obligation—just a clear, considerate reply with options.</p>
-    </section>
-  </main>
-
-  <footer class="container">
-    © 2026 Home by NKM · Intentional homes for everyday living
-  </footer>
-</body>
-</html>
+diff --git a/index.html b/index.html
+index 400bfc3aaaa4aafe4c9a7ce2b13a21988940fbfe..fb91f45a0bc8af1331e8735ae709032e2aa3115c 100644
+--- a/index.html
++++ b/index.html
+@@ -1,101 +1,109 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful styling, organization, and design support for homeowners and real estate agents." />
+   <title>Home by NKM | Calm, Functional, Sell-Ready Homes</title>
+ 
+   <style>
+     :root {
+-      --color-bg: #f4f1ec;
+-      --color-surface: #fdfaf6;
+-      --color-surface-soft: #f7f1e8;
+-      --color-ink: #1e2723;
+-      --color-muted: #45504a;
+-      --color-line: #d3ccbf;
+-      --color-accent: #2a3a34;
+-      --color-accent-soft: #deebe5;
++      --color-bg: #f5f1ea;
++      --color-surface: #fffdfa;
++      --color-surface-soft: #f8f3eb;
++      --color-ink: #1e2421;
++      --color-muted: #4e5752;
++      --color-line: #d8d0c3;
++      --color-accent: #3f5b53;
++      --color-accent-soft: #e4ede8;
+       --color-white: #ffffff;
+ 
+-      --space-1: 0.5rem;
+-      --space-2: 0.75rem;
+-      --space-3: 1rem;
+-      --space-4: 1.5rem;
+-      --space-5: 2rem;
+-      --space-6: 3rem;
+-      --space-7: 4rem;
+-
+-      --type-body: clamp(1rem, 0.96rem + 0.35vw, 1.125rem);
+-      --type-small: clamp(0.875rem, 0.82rem + 0.2vw, 0.95rem);
+-      --type-h1: clamp(2rem, 1.45rem + 3vw, 3.4rem);
+-      --type-h2: clamp(1.45rem, 1.25rem + 1.3vw, 2rem);
+-      --type-h3: clamp(1.08rem, 1rem + 0.5vw, 1.25rem);
+-
+-      --radius-sm: 0.75rem;
++      --space-0: clamp(0.25rem, 0.2rem + 0.2vw, 0.35rem);
++      --space-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.7rem);
++      --space-2: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
++      --space-3: clamp(1rem, 0.9rem + 0.5vw, 1.35rem);
++      --space-4: clamp(1.5rem, 1.25rem + 1vw, 2rem);
++      --space-5: clamp(2rem, 1.6rem + 1.6vw, 3rem);
++      --space-6: clamp(2.5rem, 1.9rem + 2.5vw, 4.25rem);
++      --space-7: clamp(3rem, 2.2rem + 3.2vw, 5.25rem);
++
++      --type-body: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
++      --type-small: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
++      --type-h1: clamp(1.95rem, 1.35rem + 3.2vw, 3.4rem);
++      --type-h2: clamp(1.4rem, 1.2rem + 1.1vw, 2rem);
++      --type-h3: clamp(1.06rem, 1rem + 0.45vw, 1.24rem);
++
++      --radius-sm: 0.7rem;
+       --radius-md: 1rem;
+-      --radius-lg: 1.35rem;
+-      --shadow-soft: 0 10px 28px rgba(20, 30, 25, 0.08);
++      --radius-lg: 1.5rem;
++      --shadow-soft: 0 10px 28px rgba(29, 38, 33, 0.06);
++      --shadow-lift: 0 16px 40px rgba(29, 38, 33, 0.08);
+ 
+       --max-content: 72rem;
+       --max-copy: 66ch;
++      --section-gap: var(--space-6);
+     }
+ 
+     * { box-sizing: border-box; }
+-    html { scroll-behavior: smooth; }
++
++    html {
++      scroll-behavior: smooth;
++      scroll-padding-top: 1rem;
++    }
+ 
+     body {
+       margin: 0;
+       font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+       font-size: var(--type-body);
+       line-height: 1.65;
+       color: var(--color-ink);
+-      background: linear-gradient(180deg, #f8f5ef 0%, var(--color-bg) 100%);
++      background: linear-gradient(180deg, #faf7f2 0%, var(--color-bg) 100%);
+       text-rendering: optimizeLegibility;
+     }
+ 
+     h1, h2, h3 {
+       margin: 0;
+-      line-height: 1.18;
+-      letter-spacing: -0.01em;
++      line-height: 1.2;
++      letter-spacing: -0.012em;
++      text-wrap: balance;
+     }
+ 
+     h1 { font-size: var(--type-h1); }
+     h2 { font-size: var(--type-h2); }
+     h3 { font-size: var(--type-h3); }
+ 
+     p { margin: 0; max-width: var(--max-copy); }
+ 
+     a {
+       color: inherit;
+       text-decoration-thickness: 1.5px;
+-      text-underline-offset: 0.15em;
++      text-underline-offset: 0.16em;
+     }
+ 
+     :focus-visible {
+-      outline: 3px solid #193329;
++      outline: 3px solid #2c4a41;
+       outline-offset: 3px;
+       border-radius: 0.35rem;
+     }
+ 
+     .skip-link {
+       position: absolute;
+       left: -100vw;
+       top: 0;
+       background: var(--color-white);
+       padding: var(--space-2) var(--space-3);
+       z-index: 100;
+       border: 1px solid var(--color-line);
+       border-radius: var(--radius-sm);
+     }
+ 
+     .skip-link:focus-visible {
+       left: var(--space-2);
+       top: var(--space-2);
+     }
+ 
+     .container {
+       width: min(var(--max-content), calc(100% - 2rem));
+       margin-inline: auto;
+     }
+ 
+@@ -108,386 +116,448 @@
+       flex-wrap: wrap;
+       align-items: center;
+       justify-content: space-between;
+       gap: var(--space-3);
+       margin-bottom: var(--space-5);
+     }
+ 
+     .brand {
+       font-size: var(--type-small);
+       font-weight: 700;
+       text-transform: uppercase;
+       letter-spacing: 0.09em;
+     }
+ 
+     .nav-links {
+       list-style: none;
+       margin: 0;
+       padding: 0;
+       display: flex;
+       flex-wrap: wrap;
+       gap: var(--space-3);
+       color: var(--color-muted);
+       font-size: var(--type-small);
+     }
+ 
++    .nav-links a { text-decoration-color: #9ba8a1; }
++
+     .hero {
+-      background: color-mix(in srgb, var(--color-white) 78%, transparent);
++      position: relative;
++      overflow: hidden;
++      background: linear-gradient(130deg, rgba(255, 255, 255, 0.95), rgba(248, 243, 235, 0.9));
+       border: 1px solid var(--color-line);
+       border-radius: var(--radius-lg);
+       box-shadow: var(--shadow-soft);
+       padding: var(--space-5);
+       display: grid;
+-      gap: var(--space-4);
++      gap: var(--space-3);
++      isolation: isolate;
++    }
++
++    .hero::after {
++      content: "";
++      position: absolute;
++      inset: -30% -10% auto auto;
++      width: clamp(10rem, 34vw, 18rem);
++      aspect-ratio: 1;
++      border-radius: 999px;
++      background: radial-gradient(circle at center, rgba(212, 226, 218, 0.8), rgba(212, 226, 218, 0));
++      z-index: -1;
++      pointer-events: none;
+     }
+ 
+     .eyebrow {
+       display: inline-block;
+       font-size: var(--type-small);
+-      color: #33403a;
++      color: #344740;
+       background: var(--color-accent-soft);
+-      border: 1px solid #bdcdc5;
++      border: 1px solid #bfd0c8;
+       border-radius: 999px;
+-      padding: 0.35rem 0.7rem;
++      padding: 0.35rem 0.75rem;
+       width: fit-content;
+       font-weight: 600;
+     }
+ 
+-    .hero p {
+-      color: #2f3a35;
+-    }
++    .hero p { color: #2f3a35; }
+ 
+     .actions {
+       display: flex;
+       flex-wrap: wrap;
+       gap: var(--space-2);
+       align-items: center;
+     }
+ 
+     .button {
+-      display: inline-block;
++      display: inline-flex;
++      align-items: center;
++      justify-content: center;
+       border-radius: var(--radius-sm);
+-      padding: 0.8rem 1.15rem;
++      padding: 0.82rem 1.15rem;
+       text-decoration: none;
+-      font-weight: 700;
++      font-weight: 650;
+       border: 1px solid transparent;
+       font-size: var(--type-small);
++      transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
++    }
++
++    .button:hover {
++      transform: translateY(-1px);
++      box-shadow: 0 8px 20px rgba(26, 37, 32, 0.11);
+     }
+ 
+     .button-primary {
+       background: var(--color-accent);
+       color: var(--color-white);
++      border-color: #3a524b;
+     }
+ 
++    .button-primary:hover { background: #354e47; }
++
+     .button-secondary {
+-      background: #eef4f1;
+-      border-color: #a9bbb2;
+-      color: #25332e;
++      background: #eff4f1;
++      border-color: #afbeb8;
++      color: #25342f;
++    }
++
++    .button-secondary:hover {
++      background: #e5ede9;
++      border-color: #9caea7;
+     }
+ 
+     main { padding-bottom: var(--space-7); }
+ 
+     .section {
+-      margin-top: var(--space-6);
++      margin-top: var(--section-gap);
+       display: grid;
+       gap: var(--space-3);
+     }
+ 
+     .section-intro { color: var(--color-muted); }
+ 
+     .grid {
+       display: grid;
+       gap: var(--space-3);
+       grid-template-columns: 1fr;
+     }
+ 
+     .card {
+       background: var(--color-surface);
+       border: 1px solid var(--color-line);
+       border-radius: var(--radius-md);
+       box-shadow: var(--shadow-soft);
+       padding: var(--space-4);
++      transition: transform 180ms ease, box-shadow 180ms ease;
+     }
+ 
+-    .card p { color: #3f4944; }
++    .card:hover {
++      transform: translateY(-2px);
++      box-shadow: var(--shadow-lift);
++    }
++
++    .card p { color: #3e4843; }
++
++    .feature-points {
++      margin: 0;
++      padding: 0;
++      list-style: none;
++      display: grid;
++      gap: var(--space-2);
++    }
++
++    .feature-points li {
++      border-left: 2px solid #adbbb5;
++      padding-left: var(--space-2);
++      color: #3c4641;
++    }
+ 
+     .process-list {
+       margin: 0;
+       padding: 0;
+       list-style: none;
+       display: grid;
+       gap: var(--space-3);
+       counter-reset: steps;
+     }
+ 
+     .process-list li {
+       counter-increment: steps;
+       border: 1px solid var(--color-line);
+       border-radius: var(--radius-md);
+       background: var(--color-surface-soft);
+       padding: var(--space-4);
+       position: relative;
+       padding-left: 3.5rem;
+     }
+ 
+     .process-list li::before {
+       content: counter(steps);
+       position: absolute;
+       left: 1rem;
+       top: 1.2rem;
+       width: 1.7rem;
+       height: 1.7rem;
+       border-radius: 50%;
+       background: var(--color-accent-soft);
+-      color: #1f3830;
++      color: #244039;
+       font-weight: 800;
+       display: grid;
+       place-items: center;
+       font-size: 0.85rem;
+     }
+ 
+     .trust-wrap {
+       display: grid;
+       gap: var(--space-3);
+     }
+ 
+     .quote {
+       font-style: italic;
+       color: #303b36;
+-      border-left: 3px solid #9ab0a5;
++      border-left: 3px solid #9eb3a9;
+       padding-left: var(--space-3);
+       margin: 0;
+     }
+ 
+     .expect-list {
+       margin: 0;
+       padding-left: 1.15rem;
+       color: #3f4944;
+       display: grid;
+       gap: 0.4rem;
+     }
+ 
+     .cta-banner {
+-      margin-top: var(--space-5);
+-      background: #26342f;
++      margin-top: var(--space-6);
++      background: #2b3a35;
+       color: #f7f8f6;
+-      border: 1px solid #3b4a45;
++      border: 1px solid #3f4f49;
+       border-radius: var(--radius-lg);
+       padding: var(--space-4);
+       display: grid;
+       gap: var(--space-3);
+     }
+ 
+-    .cta-banner p { color: #dce2de; }
++    .cta-banner p { color: #dce4df; }
+ 
+     .contact {
+       margin-top: var(--space-6);
+       background: var(--color-surface);
+       border: 1px solid var(--color-line);
+       border-radius: var(--radius-lg);
+       box-shadow: var(--shadow-soft);
+       padding: var(--space-5);
+       display: grid;
+       gap: var(--space-3);
+     }
+ 
+     form {
+       display: grid;
+       gap: var(--space-3);
+       margin-top: var(--space-1);
+     }
+ 
+     .field {
+       display: grid;
+       gap: 0.4rem;
+     }
+ 
+     label { font-weight: 600; }
+ 
+     input, textarea {
+       width: 100%;
+-      border: 1px solid #b8c0bb;
++      border: 1px solid #b7c1bc;
+       border-radius: var(--radius-sm);
+       padding: 0.75rem 0.85rem;
+       font: inherit;
+       background: #fff;
+       color: #1e2723;
+     }
+ 
+     textarea {
+       min-height: 8.25rem;
+       resize: vertical;
+     }
+ 
+     .helper {
+       color: var(--color-muted);
+       font-size: var(--type-small);
+     }
+ 
+     footer {
+       border-top: 1px solid var(--color-line);
+       color: var(--color-muted);
+       padding: var(--space-5) 0;
+       margin-top: var(--space-6);
+       font-size: var(--type-small);
+     }
+ 
+     @media (min-width: 46rem) {
+       .site-header { padding-top: var(--space-5); }
+-      .hero { padding: var(--space-6); }
++      .hero { padding: var(--space-6); gap: var(--space-4); }
+       .grid.services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+       .trust-wrap { grid-template-columns: 1.2fr 1fr 1fr; }
+       .cta-banner { grid-template-columns: 1fr auto; align-items: center; }
+     }
++
++    @media (prefers-reduced-motion: reduce) {
++      *, *::before, *::after {
++        animation-duration: 0.01ms !important;
++        animation-iteration-count: 1 !important;
++        transition-duration: 0.01ms !important;
++        scroll-behavior: auto !important;
++      }
++    }
+   </style>
+ </head>
+ 
+ <body>
+   <a href="#main-content" class="skip-link">Skip to main content</a>
+ 
+   <header class="site-header container">
+     <nav class="top-nav" aria-label="Primary">
+       <div class="brand">Home by NKM</div>
+       <ul class="nav-links">
+         <li><a href="#about">About</a></li>
+         <li><a href="#services">Services</a></li>
+         <li><a href="#process">Process</a></li>
+         <li><a href="#contact">Contact</a></li>
+       </ul>
+     </nav>
+ 
+     <section class="hero" aria-labelledby="hero-title">
+       <span class="eyebrow">For homeowners + real estate agents</span>
+-      <h1 id="hero-title">Create a calm, functional, sell-ready home—without the overwhelm.</h1>
++      <h1 id="hero-title">Thoughtful home preparation that supports daily wellbeing and confident listing decisions.</h1>
+       <p>
+-        Home by NKM helps you make high-impact updates that improve daily living and market presentation. We blend thoughtful styling, organization, and design strategy so your space feels warm, intentional, and confidently prepared.
++        Home by NKM helps busy households and agent partners make practical, high-impact updates. You get clear priorities, detail-oriented guidance, and a home that feels calm to live in and clear to present.
+       </p>
+       <div class="actions">
+         <a class="button button-primary" href="#contact">Request a Consultation</a>
+-        <a class="button button-secondary" href="#process">See how the process works</a>
++        <a class="button button-secondary" href="#process">View the process</a>
+       </div>
+     </section>
+   </header>
+ 
+   <main id="main-content" class="container">
+     <section class="section" id="about" aria-labelledby="about-title">
+       <h2 id="about-title">Why Home by NKM</h2>
+       <p class="section-intro">
+-        Founded with a healthcare background and a passion for home design, Home by NKM brings a unique lens: spaces should be beautiful, but they should also support wellbeing, ease, and real-life routines.
++        Home by NKM was shaped by a healthcare perspective: environment affects how people feel, think, and move through their day. The goal is not only a beautiful result, but a home that reduces friction and supports the people inside it.
+       </p>
+       <div class="card">
+-        <h3>Design with function + wellbeing at the center</h3>
+-        <p>
+-          Each recommendation considers flow, stress reduction, and practical day-to-day use—so the result is not just styled, but truly livable and restorative.
+-        </p>
++        <h3>Function and wellbeing, handled with care</h3>
++        <ul class="feature-points">
++          <li>Recommendations are grounded in routine: flow, storage, and sensory calm.</li>
++          <li>Every room is approached with respect for your timeline, budget, and energy.</li>
++          <li>The final look is intentional and warm without feeling over-styled.</li>
++        </ul>
+       </div>
+       <div class="actions">
+-        <a class="button button-primary" href="#contact">Request a Consultation</a>
++        <a class="button button-primary" href="#contact">Start with a no-pressure consultation</a>
+       </div>
+     </section>
+ 
+     <section class="section" id="services" aria-labelledby="services-title">
+       <h2 id="services-title">Services</h2>
+-      <p class="section-intro">Tailored support based on your goals, timeline, and how you want your home to feel.</p>
++      <p class="section-intro">Tailored support based on your goals, timeline, and how you want your home to function day-to-day.</p>
+       <div class="grid services">
+         <article class="card">
+           <h3>Pre-listing preparation</h3>
+-          <p>Strategic home edits and walkthrough recommendations to help your property show at its best.</p>
++          <p>Strategic home edits and walkthrough recommendations to help your property show clearly and feel cared for.</p>
+         </article>
+         <article class="card">
+           <h3>Home organization</h3>
+-          <p>Calm systems and decluttering support designed for real life, not just one-time aesthetics.</p>
++          <p>Calm systems and decluttering support designed for ongoing use, not temporary visual fixes.</p>
+         </article>
+         <article class="card">
+           <h3>Staging + styling</h3>
+-          <p>Thoughtful finishing layers that elevate flow, warmth, and buyer-ready presentation.</p>
++          <p>Thoughtful finishing layers that support flow, warmth, and buyer-ready presentation.</p>
+         </article>
+         <article class="card">
+           <h3>Interior design support</h3>
+-          <p>Targeted guidance on layout, finishes, and furnishings for a cohesive, timeless feel.</p>
++          <p>Targeted guidance on layout, finishes, and furnishings to maintain a cohesive, timeless look.</p>
+         </article>
+       </div>
+     </section>
+ 
+     <section class="section" id="process" aria-labelledby="process-title">
+-      <h2 id="process-title">A low-friction process</h2>
+-      <p class="section-intro">Clear steps, thoughtful communication, and support at every stage.</p>
++      <h2 id="process-title">A structured, reassuring process</h2>
++      <p class="section-intro">Clear communication, practical pacing, and thoughtful next steps at every point.</p>
+       <ol class="process-list">
+-        <li><strong>Quick consult.</strong> We learn your goals, timeline, and the current challenges in your home.</li>
+-        <li><strong>Clear plan.</strong> You receive practical, prioritized recommendations with realistic next steps.</li>
+-        <li><strong>Guided implementation.</strong> We help execute high-impact updates that create calm and confidence.</li>
+-        <li><strong>Final refinement.</strong> We fine-tune styling and function so your home feels complete and intentional.</li>
++        <li><strong>Initial conversation.</strong> We review your goals, timeline, and where the home currently feels stuck.</li>
++        <li><strong>Prioritized recommendations.</strong> You receive a clear plan with realistic actions and sequencing.</li>
++        <li><strong>Guided implementation.</strong> We support decisions and execution so progress feels steady and manageable.</li>
++        <li><strong>Final refinements.</strong> We complete small details that bring calm, cohesion, and readiness.</li>
+       </ol>
+     </section>
+ 
+     <section class="section" aria-labelledby="trust-title">
+       <h2 id="trust-title">Trust</h2>
+       <div class="trust-wrap">
+         <article class="card">
+           <h3>Client words (placeholder)</h3>
+           <p class="quote">“NKM made our home feel peaceful, polished, and ready to list in a way that still felt like us.”</p>
+-          <p class="quote">“The process was clear and supportive. Every change had purpose—and the results were immediate.”</p>
++          <p class="quote">“The process was clear and supportive. Every change had purpose, and we always knew the next step.”</p>
+         </article>
+         <article class="card">
+           <h3>Service area</h3>
+           <p>Serving [City/Region placeholder] and surrounding communities.</p>
+         </article>
+         <article class="card">
+           <h3>What to expect</h3>
+           <ul class="expect-list">
+             <li>Response within 1–2 business days</li>
+             <li>Transparent recommendations and scope</li>
+             <li>Respectful, detail-oriented in-home support</li>
+           </ul>
+         </article>
+       </div>
+     </section>
+ 
+     <section class="cta-banner" aria-label="Consultation prompt">
+       <div>
+-        <h2>Ready to make your home feel calm and elevated?</h2>
+-        <p>Start with one conversation and a clear next step.</p>
++        <h2>Ready for thoughtful next steps?</h2>
++        <p>One conversation is enough to understand fit, options, and timing—no pressure.</p>
+       </div>
+       <a class="button button-primary" href="#contact">Request a Consultation</a>
+     </section>
+ 
+     <section class="contact" id="contact" aria-labelledby="contact-title">
+-      <h2 id="contact-title">Contact</h2>
++      <h2 id="contact-title">Consultation</h2>
+       <p class="section-intro">
+-        Use this temporary form to open your email client and send your inquiry directly.
++        Share a few details below and your default email app will open a pre-filled message. You can keep it brief—we will guide thoughtful next steps from there.
+       </p>
+ 
+       <form action="mailto:hello@homebynkm.com" method="post" enctype="text/plain">
+         <div class="field">
+           <label for="name">Name</label>
+           <input id="name" name="Name" type="text" autocomplete="name" required />
+         </div>
+ 
+         <div class="field">
+           <label for="email">Email</label>
+           <input id="email" name="Email" type="email" autocomplete="email" required />
+         </div>
+ 
+         <div class="field">
+           <label for="phone">Phone (optional)</label>
+           <input id="phone" name="Phone" type="tel" autocomplete="tel" />
+         </div>
+ 
+         <div class="field">
+-          <label for="message">How can we help?</label>
++          <label for="message">What would you like support with?</label>
+           <textarea id="message" name="Message" required></textarea>
+         </div>
+ 
+         <div class="actions">
+           <button class="button button-primary" type="submit">Send Inquiry</button>
+           <a href="#" class="button button-secondary" aria-disabled="true">Prefer to schedule? Scheduling link coming soon.</a>
+         </div>
+       </form>
+-      <p class="helper">By submitting, your default mail app will open with this message pre-filled.</p>
++      <p class="helper">No pressure and no obligation—just a clear, considerate reply with options.</p>
+     </section>
+   </main>
+ 
+   <footer class="container">
+     © 2026 Home by NKM · Intentional homes for everyday living
+   </footer>
+ </body>
+ </html>
