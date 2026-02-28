@@ -3,724 +3,1484 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful styling, organization, and design support for homeowners and real estate agents." />
+  <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful staging, organization, and interior design support for homeowners and real estate agents." />
   <title>Home by NKM | Calm, Functional, Sell-Ready Homes</title>
 
   <style>
+    /* ===== DESIGN TOKENS ===== */
     :root {
-      --color-bg: #f5f1ea;
-      --color-surface: #fffdfa;
-      --color-surface-soft: #f8f3eb;
-      --color-ink: #1e2421;
-      --color-muted: #4e5752;
-      --color-line: #d8d0c3;
-      --color-accent: #3f5b53;
-      --color-accent-soft: #e4ede8;
-      --color-white: #ffffff;
-      --color-dark-overlay: rgba(31, 36, 33, 0.35);
+      --c-bg: #f5f1ea;
+      --c-surface: #fffdfa;
+      --c-surface-soft: #f8f3eb;
+      --c-ink: #1e2421;
+      --c-muted: #4e5752;
+      --c-line: #d8d0c3;
+      --c-accent: #3f5b53;
+      --c-accent-dark: #2c4a41;
+      --c-accent-soft: #e4ede8;
+      --c-white: #ffffff;
 
-      --space-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.7rem);
-      --space-2: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
-      --space-3: clamp(1rem, 0.9rem + 0.5vw, 1.35rem);
-      --space-4: clamp(1.5rem, 1.25rem + 1vw, 2rem);
-      --space-5: clamp(2rem, 1.6rem + 1.6vw, 3rem);
-      --space-6: clamp(2.5rem, 1.9rem + 2.5vw, 4.25rem);
-      --space-7: clamp(3rem, 2.2rem + 3.2vw, 5.25rem);
+      --sp-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.7rem);
+      --sp-2: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
+      --sp-3: clamp(1rem, 0.9rem + 0.5vw, 1.35rem);
+      --sp-4: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+      --sp-5: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+      --sp-6: clamp(2.5rem, 1.9rem + 2.5vw, 4.25rem);
+      --sp-7: clamp(3rem, 2.2rem + 3.2vw, 5.25rem);
 
-      --type-body: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
-      --type-small: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
-      --type-h1: clamp(2.2rem, 1.5rem + 3.5vw, 3.8rem);
-      --type-h2: clamp(1.5rem, 1.25rem + 1.2vw, 2.2rem);
-      --type-h3: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+      --t-body: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+      --t-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+      --t-h1: clamp(2.4rem, 1.6rem + 3.5vw, 4.1rem);
+      --t-h2: clamp(1.6rem, 1.3rem + 1.2vw, 2.3rem);
+      --t-h3: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
 
-      --radius-sm: 0.7rem;
-      --radius-md: 1rem;
-      --radius-lg: 1.5rem;
-      --shadow-soft: 0 10px 28px rgba(29, 38, 33, 0.06);
-      --shadow-lift: 0 16px 40px rgba(29, 38, 33, 0.08);
-      --shadow-deep: 0 20px 60px rgba(29, 38, 33, 0.12);
+      --r-sm: 0.75rem;
+      --r-md: 1.1rem;
+      --r-lg: 1.6rem;
+      --shadow-soft: 0 8px 24px rgba(29, 38, 33, 0.06);
+      --shadow-lift: 0 16px 40px rgba(29, 38, 33, 0.09);
+      --shadow-deep: 0 24px 64px rgba(29, 38, 33, 0.13);
 
-      --max-content: 76rem;
+      --max-w: 76rem;
+      --nav-h: 4rem;
     }
 
-    * { box-sizing: border-box; }
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 2rem;
+      scroll-padding-top: calc(var(--nav-h) + 1rem);
     }
 
     body {
       margin: 0;
       font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: var(--type-body);
+      font-size: var(--t-body);
       line-height: 1.65;
-      color: var(--color-ink);
-      background: var(--color-bg);
+      color: var(--c-ink);
+      background: var(--c-bg);
       text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       margin: 0;
       line-height: 1.15;
       letter-spacing: -0.015em;
       text-wrap: balance;
     }
 
-    h1 { font-size: var(--type-h1); font-weight: 700; }
-    h2 { font-size: var(--type-h2); font-weight: 700; }
-    h3 { font-size: var(--type-h3); font-weight: 650; }
+    h1 { font-size: var(--t-h1); font-weight: 700; }
+    h2 { font-size: var(--t-h2); font-weight: 700; }
+    h3 { font-size: var(--t-h3); font-weight: 600; }
+    h4 { font-size: 1.05rem; font-weight: 600; }
 
-    p { margin: 0; max-width: 65ch; }
+    p { margin: 0; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: opacity 200ms ease;
-    }
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
 
     :focus-visible {
-      outline: 3px solid #2c4a41;
-      outline-offset: 2px;
+      outline: 3px solid var(--c-accent);
+      outline-offset: 3px;
       border-radius: 0.35rem;
     }
 
+    /* ===== LAYOUT ===== */
     .container {
-      width: min(var(--max-content), calc(100% - 2rem));
+      width: min(var(--max-w), calc(100% - 2.5rem));
       margin: 0 auto;
     }
 
-    /* Header & Nav */
+    /* ===== NAVIGATION ===== */
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(255, 253, 250, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--color-line);
-      padding: var(--space-3) 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(255, 253, 250, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--c-line);
     }
 
-    .header-wrapper {
+    .nav-inner {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: var(--space-5);
+      gap: 1rem;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-size: var(--type-small);
+      gap: 0.6rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-ink);
+      letter-spacing: 0.09em;
+      color: var(--c-ink);
       flex-shrink: 0;
     }
 
-    .brand img { height: 1.5rem; width: auto; }
+    .brand-icon {
+      width: 1.9rem;
+      height: 1.9rem;
+      background: var(--c-accent);
+      border-radius: 0.45rem;
+      display: grid;
+      place-items: center;
+      color: white;
+    }
 
     .nav-links {
       display: flex;
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: var(--space-4);
-      font-size: var(--type-small);
-      color: var(--color-muted);
+      gap: var(--sp-4);
+      font-size: var(--t-sm);
     }
 
     .nav-links a {
-      color: var(--color-muted);
-      transition: color 200ms ease;
+      color: var(--c-muted);
+      font-weight: 500;
+      transition: color 180ms ease;
     }
 
-    .nav-links a:hover { color: var(--color-ink); }
+    .nav-links a:hover { color: var(--c-ink); }
 
-    /* Hero Section */
+    .nav-cta {
+      background: var(--c-accent) !important;
+      color: white !important;
+      padding: 0.52rem 1.15rem;
+      border-radius: var(--r-sm);
+      font-weight: 600;
+      transition: background 180ms ease, transform 180ms ease !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--c-accent-dark) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1.5px solid var(--c-line);
+      border-radius: var(--r-sm);
+      padding: 0.4rem 0.5rem;
+      cursor: pointer;
+      color: var(--c-ink);
+    }
+
+    .nav-toggle .bar {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      margin: 4px 0;
+      transition: all 200ms ease;
+    }
+
+    @media (max-width: 720px) {
+      .nav-toggle { display: block; }
+
+      .nav-menu {
+        display: none;
+        position: fixed;
+        inset: var(--nav-h) 0 0 0;
+        background: var(--c-surface);
+        padding: var(--sp-5) var(--sp-4);
+        z-index: 99;
+        flex-direction: column;
+        gap: var(--sp-3);
+        border-top: 1px solid var(--c-line);
+        overflow-y: auto;
+      }
+
+      .nav-menu.open { display: flex; }
+
+      .nav-links {
+        flex-direction: column;
+        gap: var(--sp-3);
+        font-size: 1.1rem;
+      }
+
+      .nav-links a { color: var(--c-ink); }
+      .nav-cta { align-self: flex-start; }
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: var(--r-sm);
+      padding: 0.9rem 1.65rem;
+      font-size: var(--t-sm);
+      font-weight: 600;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: all 220ms cubic-bezier(0.22, 1, 0.36, 1);
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+      font-family: inherit;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+
+    .btn-primary {
+      background: var(--c-accent);
+      color: white;
+      border-color: var(--c-accent-dark);
+    }
+
+    .btn-primary:hover { background: var(--c-accent-dark); }
+
+    .btn-ghost {
+      background: rgba(255, 253, 250, 0.14);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.32);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-ghost:hover { background: rgba(255, 253, 250, 0.24); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--c-ink);
+      border-color: var(--c-line);
+    }
+
+    .btn-outline:hover { background: var(--c-surface); border-color: #b0bdb7; }
+
+    /* ===== HERO ===== */
     .hero {
       position: relative;
-      min-height: 70vh;
-      display: grid;
+      min-height: 92vh;
+      display: flex;
       align-items: center;
-      padding: clamp(3rem, 10vw, 6rem) var(--space-4);
-      margin-bottom: var(--space-7);
       overflow: hidden;
-      border-radius: var(--radius-lg);
     }
 
-    .hero::before {
-      content: "";
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255, 253, 250, 0.92), rgba(248, 243, 235, 0.88)), 
-                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="rgba(245,241,234,1)"/><circle cx="1000" cy="100" r="300" fill="rgba(212,226,218,0.15)"/><circle cx="200" cy="500" r="250" fill="rgba(212,226,218,0.1)"/></svg>');
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
+      z-index: 0;
     }
 
-    .hero::after {
-      content: "";
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+    }
+
+    .hero-overlay {
       position: absolute;
-      top: -10%;
-      right: -5%;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 226, 218, 0.4), rgba(212, 226, 218, 0));
-      z-index: 0;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(16, 24, 21, 0.74) 0%,
+        rgba(16, 24, 21, 0.48) 55%,
+        rgba(16, 24, 21, 0.18) 100%
+      );
+      z-index: 1;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 580px;
+      width: 100%;
+      padding: var(--sp-7) 0;
+    }
+
+    .hero-inner {
       display: grid;
-      gap: var(--space-3);
+      gap: var(--sp-4);
+      max-width: 660px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: var(--type-small);
-      color: #2c4641;
-      background: rgba(228, 237, 232, 0.8);
-      border: 1px solid #bfd0c8;
-      border-radius: 999px;
-      padding: 0.4rem 0.9rem;
-      width: fit-content;
+      font-size: 0.75rem;
       font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(220, 238, 230, 0.92);
+      background: rgba(63, 91, 83, 0.48);
+      border: 1px solid rgba(100, 150, 130, 0.38);
+      border-radius: 999px;
+      padding: 0.45rem 1.05rem;
+      width: fit-content;
+      backdrop-filter: blur(4px);
     }
 
-    .hero h1 { color: #0d1410; margin-bottom: var(--space-2); }
-    .hero p { color: #2f3a35; font-size: 1.05rem; margin-bottom: var(--space-2); }
+    .hero h1 {
+      color: white;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.22);
+    }
 
-    .actions {
+    .hero-sub {
+      color: rgba(230, 240, 236, 0.9);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 50ch;
+    }
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-top: var(--space-2);
+      gap: 0.9rem;
+      margin-top: var(--sp-1);
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-sm);
-      padding: 0.9rem 1.4rem;
-      font-size: var(--type-small);
-      font-weight: 650;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 220ms ease;
-      text-decoration: none;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lift);
-    }
-
-    .button-primary {
-      background: var(--color-accent);
-      color: var(--color-white);
-      border-color: #3a524b;
-    }
-
-    .button-primary:hover { background: #354e47; }
-
-    .button-secondary {
-      background: #eff4f1;
-      border-color: #afbeb8;
-      color: #25342f;
-    }
-
-    .button-secondary:hover {
-      background: #e5ede9;
-      border-color: #9caea7;
-    }
-
-    /* Main Content */
-    main { padding: var(--space-7) 0; }
-
+    /* ===== SECTION ===== */
     .section {
-      margin-bottom: var(--space-7);
-      display: grid;
-      gap: var(--space-4);
+      padding: var(--sp-7) 0;
+    }
+
+    .section-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--c-accent);
+      margin-bottom: 0.7rem;
     }
 
     .section-header {
-      max-width: 700px;
+      margin-bottom: var(--sp-5);
     }
 
-    .section h2 { margin-bottom: var(--space-2); }
+    .section-header h2 { margin-bottom: var(--sp-2); }
 
-    .section-intro {
-      color: var(--color-muted);
+    .section-header p {
+      color: var(--c-muted);
       font-size: 1.05rem;
-      line-height: 1.7;
+      line-height: 1.75;
+      max-width: 58ch;
     }
 
-    /* Portfolio Grid */
-    .gallery {
+    /* ===== GALLERY ===== */
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: var(--space-3);
-      margin-top: var(--space-4);
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto auto;
+      gap: var(--sp-3);
     }
 
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: var(--radius-md);
-      aspect-ratio: 4 / 3;
-      background: #f0f0f0;
+      border-radius: var(--r-md);
+      background: #e4ddd4;
       box-shadow: var(--shadow-soft);
-      transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms ease;
       cursor: pointer;
     }
 
-    .gallery-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-deep);
-    }
+    .gallery-item:nth-child(1) { grid-column: 1 / 8; grid-row: 1; aspect-ratio: 16 / 10; }
+    .gallery-item:nth-child(2) { grid-column: 8 / 13; grid-row: 1; aspect-ratio: 3 / 2; }
+    .gallery-item:nth-child(3) { grid-column: 1 / 5; grid-row: 2; aspect-ratio: 3 / 2; }
+    .gallery-item:nth-child(4) { grid-column: 5 / 13; grid-row: 2; aspect-ratio: 16 / 10; }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 300ms ease;
+      transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item:hover img { transform: scale(1.06); }
 
-    /* Service Cards */
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(16, 24, 21, 0.5), transparent 60%);
+      opacity: 0;
+      transition: opacity 300ms ease;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--sp-3);
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+      background: rgba(63, 91, 83, 0.82);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ===== SERVICES ===== */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-4);
-      margin-top: var(--space-4);
+      grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+      gap: var(--sp-3);
     }
 
     .service-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-md);
-      padding: var(--space-4);
+      background: var(--c-surface);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-md);
+      padding: var(--sp-4);
       box-shadow: var(--shadow-soft);
-      transition: all 220ms ease;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
       display: grid;
-      gap: var(--space-2);
+      gap: var(--sp-2);
     }
 
     .service-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       box-shadow: var(--shadow-lift);
-      border-color: #c5d6cc;
+      border-color: #b8cec8;
     }
 
-    .service-card h3 { color: #1a2520; }
-    .service-card p { color: #3e4843; font-size: 0.95rem; }
+    .service-icon {
+      width: 2.65rem;
+      height: 2.65rem;
+      background: var(--c-accent-soft);
+      border-radius: 0.65rem;
+      display: grid;
+      place-items: center;
+      color: var(--c-accent);
+    }
 
-    /* Process Timeline */
+    .service-card h3 { color: #18221d; }
+    .service-card p { color: #3c4740; font-size: 0.95rem; line-height: 1.65; }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-7);
+      align-items: center;
+    }
+
+    .about-visual {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+      aspect-ratio: 4 / 3;
+    }
+
+    .about-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text h2 { margin-bottom: var(--sp-3); }
+
+    .about-text p {
+      color: var(--c-muted);
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+    .about-text p + p { margin-top: var(--sp-2); }
+
+    .value-list {
+      display: grid;
+      gap: var(--sp-2);
+      margin-top: var(--sp-4);
+    }
+
+    .value-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .value-dot {
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--c-accent-soft);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .value-dot svg { width: 0.7rem; height: 0.7rem; color: var(--c-accent); }
+
+    .value-item p {
+      font-size: 0.95rem;
+      color: #3a4540;
+      line-height: 1.65;
+    }
+
+    /* ===== PROCESS ===== */
+    .process-section {
+      background: var(--c-surface-soft);
+      border-top: 1px solid var(--c-line);
+      border-bottom: 1px solid var(--c-line);
+    }
+
+    .process-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-6);
+      align-items: start;
+    }
+
     .process-steps {
       display: grid;
-      gap: var(--space-4);
-      margin-top: var(--space-4);
-      max-width: 800px;
+      gap: 0;
     }
 
-    .step {
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      gap: var(--space-3);
-      position: relative;
-    }
-
-    .step::before {
-      content: attr(data-step);
-      position: absolute;
-      left: 12px;
-      top: 0;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--color-accent-soft);
-      color: #244039;
+    .process-step {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.1rem;
-      border: 2px solid var(--color-white);
-      box-shadow: 0 2px 8px rgba(29, 38, 33, 0.1);
+      gap: var(--sp-3);
     }
 
-    .step:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      left: 36px;
-      top: 50px;
-      height: calc(100% + var(--space-3));
+    .step-track {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .step-num {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--c-accent);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(63, 91, 83, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-line {
       width: 2px;
-      background: var(--color-line);
+      flex: 1;
+      min-height: 1.5rem;
+      background: linear-gradient(to bottom, var(--c-accent), rgba(216, 208, 195, 0.6));
+      margin: 0.25rem 0;
     }
 
-    .step-content {
-      padding-top: 0.5rem;
-      border-left: 2px solid var(--color-line);
-      padding-left: var(--space-3);
-      background: var(--color-surface);
-      border-radius: var(--radius-md);
-      padding: var(--space-3) 0 var(--space-3) var(--space-3);
+    .process-step:last-child .step-line { display: none; }
+
+    .step-body {
+      padding: 0.2rem 0 var(--sp-4) 0;
     }
 
-    .step-content h4 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.05rem;
-      color: #1a2520;
+    .step-body h4 {
+      color: #18221d;
+      margin-bottom: 0.45rem;
     }
 
-    .step-content p { color: #3e4843; font-size: 0.95rem; margin: 0; }
-
-    /* Testimonials */
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-4);
-      margin-top: var(--space-4);
-    }
-
-    .testimonial {
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-md);
-      padding: var(--space-4);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .testimonial-quote {
-      font-style: italic;
-      color: #303b36;
-      margin-bottom: var(--space-2);
-      line-height: 1.7;
+    .step-body p {
+      color: var(--c-muted);
       font-size: 0.95rem;
+      line-height: 1.65;
     }
 
-    .testimonial-author {
-      font-weight: 600;
-      color: #1a2520;
-      font-size: var(--type-small);
-    }
-
-    /* CTA Banner */
-    .cta-section {
-      background: linear-gradient(135deg, #2b3a35 0%, #1f2823 100%);
-      color: #f7f8f6;
-      border-radius: var(--radius-lg);
-      padding: clamp(2.5rem, 6vw, 4rem);
-      margin: var(--space-7) 0;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: var(--space-6);
+    .process-visual {
+      position: relative;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
       box-shadow: var(--shadow-deep);
     }
 
-    .cta-content h2 { color: #f7f8f6; margin-bottom: var(--space-2); }
-    .cta-content p { color: #dce4df; }
-
-    /* Contact Form */
-    .contact-section {
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-      border-radius: var(--radius-lg);
-      padding: clamp(2rem, 5vw, 3.5rem);
-      box-shadow: var(--shadow-soft);
-      max-width: 700px;
+    .process-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .contact-section h2 { margin-bottom: var(--space-2); }
-    .contact-section > p { margin-bottom: var(--space-4); color: var(--color-muted); }
+    .process-badge {
+      position: absolute;
+      bottom: var(--sp-3);
+      left: var(--sp-3);
+      right: var(--sp-3);
+      background: rgba(255, 253, 250, 0.93);
+      backdrop-filter: blur(10px);
+      border-radius: var(--r-sm);
+      padding: var(--sp-2) var(--sp-3);
+      border: 1px solid rgba(216, 208, 195, 0.7);
+    }
+
+    .process-badge-label {
+      font-size: 0.72rem;
+      color: var(--c-accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .process-badge p {
+      font-size: 0.875rem;
+      color: var(--c-ink);
+      margin-top: 0.2rem;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-section {
+      background: var(--c-surface-soft);
+      border-top: 1px solid var(--c-line);
+      border-bottom: 1px solid var(--c-line);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-3);
+    }
+
+    .testimonial {
+      background: var(--c-surface);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-md);
+      padding: var(--sp-4);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: var(--sp-2);
+      align-content: start;
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+      color: #c09840;
+    }
+
+    .testimonial-quote {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: #2c3832;
+      font-style: italic;
+    }
+
+    .testimonial-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-top: var(--sp-2);
+      border-top: 1px solid var(--c-line);
+    }
+
+    .testimonial-avatar {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: var(--c-accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--c-accent);
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: var(--t-sm);
+      color: #18221d;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--c-muted);
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, #1f2c27 0%, #141f1b 50%, #1c2e28 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -8%;
+      width: 48vw;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(63, 91, 83, 0.22), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--sp-5);
+      padding: clamp(3rem, 7vw, 5.5rem) 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-text h2 {
+      color: #edf3f0;
+      margin-bottom: var(--sp-2);
+    }
+
+    .cta-text p {
+      color: #96b0a8;
+      font-size: 1.05rem;
+      max-width: 48ch;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.65fr;
+      gap: var(--sp-6);
+      align-items: start;
+    }
+
+    .contact-info h2 { margin-bottom: var(--sp-3); }
+
+    .contact-info > p {
+      color: var(--c-muted);
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: var(--sp-2);
+      margin-top: var(--sp-4);
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: var(--t-sm);
+      color: var(--c-muted);
+    }
+
+    .contact-detail svg { color: var(--c-accent); flex-shrink: 0; }
+
+    .contact-form-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      box-shadow: var(--shadow-soft);
+    }
 
     .form {
       display: grid;
-      gap: var(--space-3);
-      margin-top: var(--space-3);
+      gap: var(--sp-3);
     }
 
-    .form-field {
+    .form-row {
       display: grid;
-      gap: 0.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2);
     }
 
-    .form-field label {
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field label {
       font-weight: 600;
-      font-size: var(--type-small);
+      font-size: 0.84rem;
       color: #1a2520;
     }
 
-    .form-field input,
-    .form-field textarea {
+    .field input,
+    .field textarea,
+    .field select {
       width: 100%;
-      padding: 0.85rem;
-      border: 1px solid #b7c1bc;
-      border-radius: var(--radius-sm);
+      padding: 0.82rem 0.95rem;
+      border: 1.5px solid #c5cfc9;
+      border-radius: var(--r-sm);
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.95rem;
       background: #fff;
-      color: #1e2723;
-      transition: border-color 200ms ease;
+      color: var(--c-ink);
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+      appearance: none;
     }
 
-    .form-field input:focus,
-    .form-field textarea:focus {
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
       outline: none;
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px rgba(63, 91, 83, 0.1);
+      border-color: var(--c-accent);
+      box-shadow: 0 0 0 3px rgba(63, 91, 83, 0.12);
     }
 
-    .form-field textarea { resize: vertical; min-height: 120px; }
+    .field textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
 
-    .form-helper {
-      color: var(--color-muted);
-      font-size: var(--type-small);
-      margin-top: var(--space-2);
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--color-line);
-      color: var(--color-muted);
-      padding: var(--space-5) 0;
-      margin-top: var(--space-7);
-      font-size: var(--type-small);
+    .form-note {
+      font-size: 0.82rem;
+      color: var(--c-muted);
       text-align: center;
+      margin-top: var(--sp-1);
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .header-wrapper { gap: var(--space-3); }
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: #161d1a;
+      color: #8a9e97;
+      padding: var(--sp-6) 0 var(--sp-4);
+    }
 
-      .nav-links { gap: var(--space-3); font-size: 0.85rem; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: var(--sp-5);
+      padding-bottom: var(--sp-5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
 
-      .cta-section {
-        grid-template-columns: 1fr;
-        gap: var(--space-4);
-        text-align: center;
-      }
+    .footer-brand h3 {
+      color: #d8e4df;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
 
-      .gallery { grid-template-columns: 1fr; }
+    .footer-brand p {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      max-width: 26ch;
+    }
 
-      .services-grid { grid-template-columns: 1fr; }
+    .footer-col h4 {
+      color: #c2d1cb;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--sp-2);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .footer-col a {
+      font-size: 0.875rem;
+      color: #8a9e97;
+      transition: color 180ms ease;
+    }
+
+    .footer-col a:hover { color: #c2d1cb; }
+
+    .footer-bottom {
+      padding-top: var(--sp-4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      font-size: 0.82rem;
+    }
+
+    /* ===== SCROLL FADE ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-column: 1 / 2; grid-row: 1; }
+      .gallery-item:nth-child(2) { grid-column: 2 / 3; grid-row: 1; }
+      .gallery-item:nth-child(3) { grid-column: 1 / 2; grid-row: 2; }
+      .gallery-item:nth-child(4) { grid-column: 2 / 3; grid-row: 2; }
+
+      .about-grid { grid-template-columns: 1fr; gap: var(--sp-5); }
+      .about-visual { max-width: 500px; }
+
+      .process-layout { grid-template-columns: 1fr; }
+      .process-visual { aspect-ratio: 16 / 9; max-width: 500px; }
+
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item { aspect-ratio: 4 / 3 !important; }
+      .gallery-item:nth-child(n) { grid-column: 1; grid-row: auto; }
+
+      .cta-inner { grid-template-columns: 1fr; text-align: center; }
+      .cta-text p { max-width: 100%; }
+
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fade-up { opacity: 1; transform: none; }
     }
   </style>
 </head>
-
 <body>
+
+  <!-- ── NAVIGATION ─────────────────────────────────────────────── -->
   <header class="site-header">
     <div class="container">
-      <div class="header-wrapper">
-        <div class="brand">
-          <!-- Using SVG icon. To use logo.png instead, replace with: <img src="./images/Logo.png" alt="Home by NKM" /> -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="Home by NKM homepage">
+          <span class="brand-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </span>
           Home by NKM
-        </div>
-        <nav>
+        </a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
           <ul class="nav-links">
-            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#gallery">Work</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#process">Process</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
           </ul>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <div class="container">
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">✨ For homeowners + real estate agents</span>
-        <h1>Thoughtful home preparation that supports daily wellbeing and confident listing decisions.</h1>
-        <p>Home by NKM helps busy households and agent partners make practical, high-impact updates. You get clear priorities, detail-oriented guidance, and a home that feels calm to live in and clear to present.</p>
-        <div class="actions">
-          <a class="button button-primary" href="#contact">Request a Consultation</a>
-          <a class="button button-secondary" href="#process">View the process</a>
+  <!-- ── HERO ───────────────────────────────────────────────────── -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-bg" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1800&fit=crop&q=85"
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-inner">
+          <span class="eyebrow">For Homeowners &amp; Real Estate Agents</span>
+          <h1>Homes prepared with care.<br>Ready to show. Ready to live.</h1>
+          <p class="hero-sub">Home by NKM brings calm, detail-oriented guidance to home preparation — from thoughtful organization to buyer-ready staging. Your space, elevated.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Request a Consultation</a>
+            <a class="btn btn-ghost" href="#process">See the process</a>
+          </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <main class="container">
-    <section class="section" id="portfolio">
-      <div class="section-header">
-        <h2>Featured Work</h2>
-        <p class="section-intro">Spaces transformed to reflect who people are. Calm, organized, and ready to live in or show.</p>
+  <!-- ── GALLERY ────────────────────────────────────────────────── -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-label">Featured Work</p>
+        <h2>Spaces made calm, cohesive, and ready.</h2>
+        <p>Every project is shaped around how the people inside actually live — then refined for buyers who need to imagine themselves there.</p>
       </div>
-      <div class="gallery">
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=450&fit=crop" alt="Master bedroom with warm lighting and organized layout" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop" alt="Dining room with wood furniture and brass fixtures" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=450&fit=crop" alt="Bright living room with natural light and calm styling" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1567932944f5db0d93fd5ae5c2d5ef65a54b0e0f?w=600&h=450&fit=crop" alt="Organized children's room with functional storage" /></div>
+      <div class="gallery-grid">
+        <div class="gallery-item fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&q=80"
+            alt="Bright open-plan living room with warm neutral tones, layered textiles, and curated bookshelves"
+            loading="lazy"
+          />
+          <div class="gallery-overlay"><span class="gallery-tag">Living Room</span></div>
+        </div>
+        <div class="gallery-item fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&h=500&fit=crop&q=80"
+            alt="Serene primary bedroom with linen bedding, soft lighting, and minimal accents"
+            loading="lazy"
+          />
+          <div class="gallery-overlay"><span class="gallery-tag">Primary Bedroom</span></div>
+        </div>
+        <div class="gallery-item fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop&q=80"
+            alt="Organized kitchen with open shelving, clean surfaces, and warm wood accents"
+            loading="lazy"
+          />
+          <div class="gallery-overlay"><span class="gallery-tag">Kitchen</span></div>
+        </div>
+        <div class="gallery-item fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop&q=80"
+            alt="Dining space with natural materials, warm light, and an elevated but approachable table setting"
+            loading="lazy"
+          />
+          <div class="gallery-overlay"><span class="gallery-tag">Dining</span></div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="services">
-      <div class="section-header">
-        <h2>Services</h2>
-        <p class="section-intro">Tailored support based on your goals, timeline, and how you want your home to function.</p>
+  <!-- ── SERVICES ───────────────────────────────────────────────── -->
+  <section class="section" id="services" style="background: var(--c-surface-soft); border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line);">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-label">Services</p>
+        <h2>What we offer</h2>
+        <p>Every engagement is tailored to your goals, your timeline, and your home's unique needs.</p>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card fade-up">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
           <h3>Pre-Listing Preparation</h3>
-          <p>Strategic home edits and walkthrough recommendations to help your property show clearly and feel cared for.</p>
+          <p>Strategic walkthrough recommendations and targeted edits that help your home show clearly and feel cared for — without over-staging.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card fade-up">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </div>
           <h3>Home Organization</h3>
-          <p>Calm systems and decluttering support designed for ongoing use, not temporary visual fixes.</p>
+          <p>Calm systems designed for real daily life — not just visual tidiness. Decluttering, storage solutions, and sustainable routines.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card fade-up">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
           <h3>Staging + Styling</h3>
-          <p>Thoughtful finishing layers that support flow, warmth, and buyer-ready presentation.</p>
+          <p>Thoughtful finishing layers — furniture placement, art, textiles — that support flow, warmth, and buyer-ready presentation.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card fade-up">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
           <h3>Interior Design Support</h3>
-          <p>Targeted guidance on layout, finishes, and furnishings to maintain a cohesive, timeless look.</p>
+          <p>Targeted guidance on layout, finishes, and furnishings. A cohesive, timeless look that holds up in photos and in person.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="about">
-      <div class="section-header">
-        <h2>Why Home by NKM</h2>
-        <p class="section-intro">Home by NKM was shaped by a healthcare perspective: environment affects how people feel, think, and move through their day. The goal is not only a beautiful result, but a home that reduces friction and supports the people inside it.</p>
-      </div>
-      <div class="service-card" style="max-width: 600px;">
-        <h3>Function and Wellbeing, Handled with Care</h3>
-        <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 0.75rem; color: #3c4641;">
-          <li style="border-left: 2px solid #adbbb5; padding-left: 1rem;">Recommendations are grounded in routine: flow, storage, and sensory calm.</li>
-          <li style="border-left: 2px solid #adbbb5; padding-left: 1rem;">Every room is approached with respect for your timeline, budget, and energy.</li>
-          <li style="border-left: 2px solid #adbbb5; padding-left: 1rem;">The final look is intentional and warm without feeling over-styled.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="process">
-      <div class="section-header">
-        <h2>A Structured, Reassuring Process</h2>
-        <p class="section-intro">Clear communication, practical pacing, and thoughtful next steps at every point.</p>
-      </div>
-      <div class="process-steps">
-        <div class="step" data-step="1">
-          <div class="step-content">
-            <h4>Initial Conversation</h4>
-            <p>We review your goals, timeline, and where the home currently feels stuck.</p>
-          </div>
+  <!-- ── ABOUT ──────────────────────────────────────────────────── -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&h=530&fit=crop&q=80"
+            alt="Calm, well-organized living room with a warm and functional aesthetic"
+            loading="lazy"
+          />
         </div>
-        <div class="step" data-step="2">
-          <div class="step-content">
-            <h4>Prioritized Recommendations</h4>
-            <p>You receive a clear plan with realistic actions and sequencing.</p>
-          </div>
-        </div>
-        <div class="step" data-step="3">
-          <div class="step-content">
-            <h4>Guided Implementation</h4>
-            <p>We support decisions and execution so progress feels steady and manageable.</p>
-          </div>
-        </div>
-        <div class="step" data-step="4">
-          <div class="step-content">
-            <h4>Final Refinements</h4>
-            <p>We complete small details that bring calm, cohesion, and readiness.</p>
+        <div class="about-text fade-up">
+          <p class="section-label">About Home by NKM</p>
+          <h2>Function first.<br>Warmth always.</h2>
+          <p>Home by NKM grew from a healthcare perspective: environment shapes how people feel, think, and move through their day. Preparation isn't just about aesthetics — it's about reducing friction and restoring ease.</p>
+          <p>Every room is approached with respect for your timeline, budget, and energy. The result is intentional, warm, and grounded — never over-styled.</p>
+          <div class="value-list">
+            <div class="value-item">
+              <div class="value-dot" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg>
+              </div>
+              <p>Recommendations grounded in routine, flow, and sensory calm.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-dot" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg>
+              </div>
+              <p>Every decision made with your budget and energy in mind.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-dot" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg>
+              </div>
+              <p>A final result that's elevated and livable — not performative.</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="section-header">
-        <h2>What Clients Say</h2>
+  <!-- ── PROCESS ────────────────────────────────────────────────── -->
+  <section class="section process-section" id="process">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-label">How It Works</p>
+        <h2>A structured, reassuring process.</h2>
+        <p>Clear communication, practical pacing, and supportive guidance at every step.</p>
       </div>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p class="testimonial-quote">"NKM made our home feel peaceful, polished, and ready to list in a way that still felt like us."</p>
-          <p class="testimonial-author">— Satisfied Homeowner</p>
+      <div class="process-layout">
+        <div class="process-steps">
+          <div class="process-step fade-up">
+            <div class="step-track">
+              <div class="step-num">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <h4>Initial Conversation</h4>
+              <p>We review your goals, timeline, and where the home currently feels stuck — no pressure, just clarity.</p>
+            </div>
+          </div>
+          <div class="process-step fade-up">
+            <div class="step-track">
+              <div class="step-num">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <h4>Prioritized Plan</h4>
+              <p>You receive clear, realistic recommendations sequenced by impact — so you always know what to do next.</p>
+            </div>
+          </div>
+          <div class="process-step fade-up">
+            <div class="step-track">
+              <div class="step-num">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <h4>Guided Implementation</h4>
+              <p>We support decisions and execution throughout so progress stays steady and manageable, not overwhelming.</p>
+            </div>
+          </div>
+          <div class="process-step fade-up">
+            <div class="step-track">
+              <div class="step-num">4</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <h4>Final Refinements</h4>
+              <p>We complete the small details that bring calm, cohesion, and readiness to your home.</p>
+            </div>
+          </div>
         </div>
-        <div class="testimonial">
-          <p class="testimonial-quote">"The process was clear and supportive. Every change had purpose, and we always knew the next step."</p>
-          <p class="testimonial-author">— Real Estate Partner</p>
+
+        <div class="process-visual fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=750&fit=crop&q=80"
+            alt="Staged living room with elegant, neutral furnishings ready for listing photography"
+            loading="lazy"
+          />
+          <div class="process-badge">
+            <p class="process-badge-label">The result</p>
+            <p>A home that feels calm to live in and clear to present.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="cta-section">
-      <div class="cta-content">
-        <h2>Ready for Thoughtful Next Steps?</h2>
-        <p>One conversation is enough to understand fit, options, and timing—no pressure.</p>
+  <!-- ── TESTIMONIALS ───────────────────────────────────────────── -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header fade-up" style="text-align: center; max-width: none;">
+        <p class="section-label">Client Stories</p>
+        <h2>What homeowners and agents say.</h2>
       </div>
-      <a class="button button-primary" href="#contact">Request a Consultation</a>
-    </section>
+      <div class="testimonials-grid">
+        <div class="testimonial fade-up">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"NKM made our home feel peaceful, polished, and ready to list in a way that still felt like us. We weren't expecting how much lighter the house would feel."</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">SL</div>
+            <div>
+              <p class="testimonial-name">Sarah L.</p>
+              <p class="testimonial-role">Homeowner, Chicago IL</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial fade-up">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"The process was clear and supportive. Every change had purpose, and we always knew the next step. My clients were thrilled with how the home presented."</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">MR</div>
+            <div>
+              <p class="testimonial-name">Mark R.</p>
+              <p class="testimonial-role">Realtor, North Shore</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial fade-up">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"We lived in clutter for years before NKM helped us see our home differently. Two weeks after staging, we accepted an offer above asking price."</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">JT</div>
+            <div>
+              <p class="testimonial-name">Jessica T.</p>
+              <p class="testimonial-role">Homeowner, Evanston IL</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial fade-up">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"What I appreciated most was how NKM worked around our busy schedule. Nothing felt rushed or forced — just calm, organized, impactful progress."</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">DC</div>
+            <div>
+              <p class="testimonial-name">David C.</p>
+              <p class="testimonial-role">Homeowner, Lincoln Park</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="contact-section" id="contact">
-      <h2>Consultation</h2>
-      <p>Share a few details below and your default email app will open a pre-filled message.</p>
-      <form id="contact-form" class="form">
-        <div class="form-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
+  <!-- ── CTA BANNER ─────────────────────────────────────────────── -->
+  <section class="cta-banner" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text fade-up">
+          <h2>Ready for calm, thoughtful next steps?</h2>
+          <p>One conversation is enough to understand fit, scope, and timing. No pressure. No obligation.</p>
         </div>
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-field">
-          <label for="phone">Phone (Optional)</label>
-          <input type="tel" id="phone" name="phone" />
-        </div>
-        <div class="form-field">
-          <label for="message">What would you like support with?</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="button button-primary">Send Inquiry</button>
-      </form>
-      <p class="form-helper">No pressure and no obligation—just a clear, considerate reply with options.</p>
-    </section>
-  </main>
+        <a class="btn btn-primary fade-up" href="#contact" style="white-space: nowrap;">Request a Consultation</a>
+      </div>
+    </div>
+  </section>
 
-  <footer class="container">
-    <p>© 2026 Home by NKM · Intentional homes for everyday living</p>
+  <!-- ── CONTACT ────────────────────────────────────────────────── -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <p class="section-label">Get in Touch</p>
+          <h2>Let's talk about your home.</h2>
+          <p>Share a bit about your space and what you're hoping for. We'll respond with honest options and clear next steps.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <span>hello@homebyNKM.com</span>
+            </div>
+            <div class="contact-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Chicagoland Area</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card fade-up">
+          <form id="contact-form" class="form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Full Name <span aria-hidden="true" style="color: #b83232;">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" required placeholder="Your name" />
+              </div>
+              <div class="field">
+                <label for="email">Email <span aria-hidden="true" style="color: #b83232;">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span style="font-weight: 400; color: var(--c-muted);">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(312) 555-0100" />
+            </div>
+            <div class="field">
+              <label for="service">Service you're interested in</label>
+              <select id="service" name="service">
+                <option value="">Choose a service…</option>
+                <option>Pre-Listing Preparation</option>
+                <option>Home Organization</option>
+                <option>Staging + Styling</option>
+                <option>Interior Design Support</option>
+                <option>Multiple / Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Tell us about your space <span aria-hidden="true" style="color: #b83232;">*</span></label>
+              <textarea id="message" name="message" required placeholder="What's your timeline, situation, or what's feeling stuck?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Inquiry</button>
+          </form>
+          <p class="form-note">We reply within 24–48 hours with clear, considerate options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Home by NKM</h3>
+          <p>Calm, functional, sell-ready homes. Thoughtful guidance for homeowners and real estate partners.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Pre-Listing Prep</a></li>
+            <li><a href="#services">Organization</a></li>
+            <li><a href="#services">Staging + Styling</a></li>
+            <li><a href="#services">Design Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#gallery">Our Work</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Home by NKM · All rights reserved</p>
+        <p>Intentional homes for everyday living.</p>
+      </div>
+    </div>
   </footer>
 
   <script>
-    const form = document.getElementById('contact-form');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
+    // ── Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
 
-        const subject = encodeURIComponent('Home by NKM Consultation Request');
-        const body = encodeURIComponent(
-          `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // ── Scroll-triggered fade-in
+    const fadeEls = document.querySelectorAll('.fade-up');
+
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+
+      fadeEls.forEach((el, i) => {
+        el.style.transitionDelay = (i % 4) * 75 + 'ms';
+        obs.observe(el);
+      });
+    } else {
+      fadeEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // ── Contact form → mailto
+    const form = document.getElementById('contact-form');
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name    = document.getElementById('name').value.trim();
+        const email   = document.getElementById('email').value.trim();
+        const phone   = document.getElementById('phone').value.trim();
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !message) return;
+
+        const subject = encodeURIComponent('Home by NKM — Consultation Request');
+        const body    = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}` +
+          (phone   ? `\nPhone: ${phone}`     : '') +
+          (service ? `\nService: ${service}` : '') +
+          `\n\n${message}`
         );
 
         window.location.href = `mailto:hello@homebyNKM.com?subject=${subject}&body=${body}`;
       });
     }
   </script>
+
 </body>
 </html>
