@@ -3,46 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful staging, organization, and interior design support for homeowners and real estate agents." />
+  <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful staging, organization, and interior design support for homeowners and real estate agents in Chicagoland." />
   <title>Home by NKM | Calm, Functional, Sell-Ready Homes</title>
+
+  <!-- Cormorant Garamond (editorial serif) + Poppins (clean sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ===== DESIGN TOKENS ===== */
     :root {
-      --c-bg: #f5f1ea;
-      --c-surface: #fffdfa;
-      --c-surface-soft: #f8f3eb;
-      --c-ink: #1e2421;
-      --c-muted: #4e5752;
-      --c-line: #d8d0c3;
-      --c-accent: #3f5b53;
-      --c-accent-dark: #2c4a41;
-      --c-accent-soft: #e4ede8;
-      --c-white: #ffffff;
+      /* Warm editorial palette — Meridith Baer-inspired */
+      --c-bg:           #f7f4f1;
+      --c-surface:      #fffcf8;
+      --c-surface-soft: #f0ebe3;
+      --c-ink:          #2e2a26;
+      --c-muted:        #74675a;
+      --c-line:         #ddd5c8;
+      --c-accent:       #3f5b53;
+      --c-accent-dark:  #2c4a41;
+      --c-accent-soft:  #e4ede8;
+      --c-warm:         #88796a;
+      --c-white:        #ffffff;
 
-      --sp-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.7rem);
-      --sp-2: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
-      --sp-3: clamp(1rem, 0.9rem + 0.5vw, 1.35rem);
-      --sp-4: clamp(1.5rem, 1.25rem + 1vw, 2rem);
-      --sp-5: clamp(2rem, 1.6rem + 1.6vw, 3rem);
-      --sp-6: clamp(2.5rem, 1.9rem + 2.5vw, 4.25rem);
-      --sp-7: clamp(3rem, 2.2rem + 3.2vw, 5.25rem);
+      /* Spacing — more generous than before */
+      --sp-1: clamp(0.5rem,  0.45rem + 0.2vw,  0.7rem);
+      --sp-2: clamp(0.875rem,0.75rem + 0.45vw,  1.1rem);
+      --sp-3: clamp(1.25rem, 1rem   + 0.75vw,   1.6rem);
+      --sp-4: clamp(1.75rem, 1.4rem + 1.2vw,    2.4rem);
+      --sp-5: clamp(2.5rem,  2rem   + 2vw,       3.5rem);
+      --sp-6: clamp(3.5rem,  2.5rem + 3.5vw,     5.5rem);
+      --sp-7: clamp(5rem,    3.5rem + 5vw,        8rem);
 
-      --t-body: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
-      --t-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
-      --t-h1: clamp(2.4rem, 1.6rem + 3.5vw, 4.1rem);
-      --t-h2: clamp(1.6rem, 1.3rem + 1.2vw, 2.3rem);
-      --t-h3: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+      /* Type — serif for display, sans for UI */
+      --f-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --f-sans:  'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 
-      --r-sm: 0.75rem;
-      --r-md: 1.1rem;
-      --r-lg: 1.6rem;
-      --shadow-soft: 0 8px 24px rgba(29, 38, 33, 0.06);
-      --shadow-lift: 0 16px 40px rgba(29, 38, 33, 0.09);
-      --shadow-deep: 0 24px 64px rgba(29, 38, 33, 0.13);
+      --t-body: clamp(0.875rem, 0.84rem + 0.15vw, 0.96rem);
+      --t-sm:   clamp(0.75rem,  0.72rem + 0.1vw,  0.82rem);
+      --t-h1:   clamp(3rem,     1.8rem  + 5vw,     6.2rem);
+      --t-h2:   clamp(2rem,     1.4rem  + 2vw,     3.2rem);
+      --t-h3:   clamp(1rem,     0.95rem + 0.3vw,   1.2rem);
 
-      --max-w: 76rem;
-      --nav-h: 4rem;
+      /* Geometry — sharper, more editorial */
+      --r-sm: 0.15rem;
+      --r-md: 0.25rem;
+      --r-lg: 0.4rem;
+
+      --shadow-soft: 0 4px 20px rgba(46, 42, 38, 0.06);
+      --shadow-lift: 0 12px 40px rgba(46, 42, 38, 0.10);
+      --shadow-deep: 0 24px 64px rgba(46, 42, 38, 0.14);
+
+      --max-w: 82rem;
+      --nav-h: 5rem;
     }
 
     /* ===== RESET ===== */
@@ -55,55 +69,68 @@
 
     body {
       margin: 0;
-      font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--f-sans);
       font-size: var(--t-body);
-      line-height: 1.65;
+      font-weight: 300;
+      line-height: 1.8;
       color: var(--c-ink);
       background: var(--c-bg);
-      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    h1, h2, h3, h4 {
+    h1, h2 {
       margin: 0;
-      line-height: 1.15;
-      letter-spacing: -0.015em;
+      font-family: var(--f-serif);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
       text-wrap: balance;
     }
 
-    h1 { font-size: var(--t-h1); font-weight: 700; }
-    h2 { font-size: var(--t-h2); font-weight: 700; }
-    h3 { font-size: var(--t-h3); font-weight: 600; }
-    h4 { font-size: 1.05rem; font-weight: 600; }
+    h3, h4 {
+      margin: 0;
+      font-family: var(--f-sans);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: var(--t-h1); }
+    h2 { font-size: var(--t-h2); }
+    h3 { font-size: var(--t-h3); letter-spacing: 0.04em; }
+    h4 { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
 
     p { margin: 0; }
-
     a { color: inherit; text-decoration: none; }
-
     img { display: block; max-width: 100%; }
 
     :focus-visible {
-      outline: 3px solid var(--c-accent);
+      outline: 2px solid var(--c-accent);
       outline-offset: 3px;
-      border-radius: 0.35rem;
     }
 
     /* ===== LAYOUT ===== */
     .container {
-      width: min(var(--max-w), calc(100% - 2.5rem));
+      width: min(var(--max-w), calc(100% - 3rem));
       margin: 0 auto;
     }
 
     /* ===== NAVIGATION ===== */
     .site-header {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       height: var(--nav-h);
-      background: rgba(255, 253, 250, 0.94);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--c-line);
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 500ms ease, border-color 500ms ease, backdrop-filter 500ms ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(247, 244, 241, 0.96);
+      border-bottom-color: var(--c-line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
     .nav-inner {
@@ -114,26 +141,16 @@
       gap: 1rem;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--c-ink);
-      flex-shrink: 0;
+    .brand img {
+      height: 2.6rem;
+      width: auto;
+      display: block;
+      transition: filter 500ms ease;
     }
 
-    .brand-icon {
-      width: 1.9rem;
-      height: 1.9rem;
-      background: var(--c-accent);
-      border-radius: 0.45rem;
-      display: grid;
-      place-items: center;
-      color: white;
+    /* Logo is white over hero, normal once scrolled */
+    .site-header:not(.scrolled) .brand img {
+      filter: brightness(0) invert(1);
     }
 
     .nav-links {
@@ -141,50 +158,68 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: var(--sp-4);
-      font-size: var(--t-sm);
+      gap: var(--sp-5);
     }
 
     .nav-links a {
-      color: var(--c-muted);
-      font-weight: 500;
-      transition: color 180ms ease;
+      font-size: var(--t-sm);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      transition: color 220ms ease;
     }
 
-    .nav-links a:hover { color: var(--c-ink); }
+    .site-header.scrolled .nav-links a { color: var(--c-muted); }
+    .nav-links a:hover { color: white; }
+    .site-header.scrolled .nav-links a:hover { color: var(--c-ink); }
 
     .nav-cta {
-      background: var(--c-accent) !important;
+      font-size: var(--t-sm) !important;
+      font-weight: 400 !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase;
       color: white !important;
-      padding: 0.52rem 1.15rem;
-      border-radius: var(--r-sm);
-      font-weight: 600;
-      transition: background 180ms ease, transform 180ms ease !important;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 0.5rem 1.25rem;
+      transition: background 220ms ease, border-color 220ms ease !important;
     }
 
     .nav-cta:hover {
-      background: var(--c-accent-dark) !important;
-      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.15) !important;
+      color: white !important;
+    }
+
+    .site-header.scrolled .nav-cta {
+      color: var(--c-ink) !important;
+      border-color: var(--c-ink) !important;
+    }
+
+    .site-header.scrolled .nav-cta:hover {
+      background: var(--c-ink) !important;
+      color: white !important;
     }
 
     /* Hamburger */
     .nav-toggle {
       display: none;
       background: none;
-      border: 1.5px solid var(--c-line);
-      border-radius: var(--r-sm);
-      padding: 0.4rem 0.5rem;
+      border: none;
       cursor: pointer;
-      color: var(--c-ink);
+      color: white;
+      padding: 0.4rem;
+      transition: color 500ms ease;
     }
+
+    .site-header.scrolled .nav-toggle { color: var(--c-ink); }
 
     .nav-toggle .bar {
       display: block;
-      width: 20px;
-      height: 2px;
+      width: 22px;
+      height: 1.5px;
       background: currentColor;
-      margin: 4px 0;
-      transition: all 200ms ease;
+      margin: 5px 0;
+      transition: all 220ms ease;
     }
 
     @media (max-width: 720px) {
@@ -208,11 +243,25 @@
       .nav-links {
         flex-direction: column;
         gap: var(--sp-3);
-        font-size: 1.1rem;
       }
 
-      .nav-links a { color: var(--c-ink); }
-      .nav-cta { align-self: flex-start; }
+      .nav-links a {
+        font-size: 1rem;
+        color: var(--c-muted) !important;
+      }
+
+      .nav-links a:hover { color: var(--c-ink) !important; }
+
+      .nav-cta {
+        align-self: flex-start;
+        color: var(--c-ink) !important;
+        border-color: var(--c-ink) !important;
+      }
+
+      .nav-cta:hover {
+        background: var(--c-ink) !important;
+        color: white !important;
+      }
     }
 
     /* ===== BUTTONS ===== */
@@ -220,54 +269,63 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
-      border-radius: var(--r-sm);
-      padding: 0.9rem 1.65rem;
+      gap: 0.5rem;
+      padding: 0.95rem 2.25rem;
+      font-family: var(--f-sans);
       font-size: var(--t-sm);
-      font-weight: 600;
-      border: 1.5px solid transparent;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
       cursor: pointer;
-      transition: all 220ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
       text-decoration: none;
       white-space: nowrap;
-      letter-spacing: -0.01em;
-      font-family: inherit;
     }
-
-    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
 
     .btn-primary {
-      background: var(--c-accent);
+      background: var(--c-ink);
       color: white;
-      border-color: var(--c-accent-dark);
+      border-color: var(--c-ink);
     }
 
-    .btn-primary:hover { background: var(--c-accent-dark); }
+    .btn-primary:hover {
+      background: transparent;
+      color: white;
+      border-color: white;
+    }
 
     .btn-ghost {
-      background: rgba(255, 253, 250, 0.14);
+      background: transparent;
       color: white;
-      border-color: rgba(255, 255, 255, 0.32);
-      backdrop-filter: blur(4px);
+      border-color: rgba(255, 255, 255, 0.5);
     }
 
-    .btn-ghost:hover { background: rgba(255, 253, 250, 0.24); }
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
 
     .btn-outline {
       background: transparent;
       color: var(--c-ink);
-      border-color: var(--c-line);
+      border-color: var(--c-ink);
     }
 
-    .btn-outline:hover { background: var(--c-surface); border-color: #b0bdb7; }
+    .btn-outline:hover {
+      background: var(--c-ink);
+      color: white;
+    }
 
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      min-height: 92vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       overflow: hidden;
+      text-align: center;
     }
 
     .hero-bg {
@@ -287,10 +345,10 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        to right,
-        rgba(16, 24, 21, 0.74) 0%,
-        rgba(16, 24, 21, 0.48) 55%,
-        rgba(16, 24, 21, 0.18) 100%
+        to bottom,
+        rgba(20, 16, 12, 0.42) 0%,
+        rgba(20, 16, 12, 0.36) 55%,
+        rgba(20, 16, 12, 0.58) 100%
       );
       z-index: 1;
     }
@@ -303,72 +361,112 @@
     }
 
     .hero-inner {
+      max-width: 840px;
+      margin: 0 auto;
       display: grid;
-      gap: var(--sp-4);
-      max-width: 660px;
+      gap: var(--sp-3);
+      place-items: center;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-family: var(--f-sans);
+      font-size: var(--t-sm);
+      font-weight: 400;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(220, 238, 230, 0.92);
-      background: rgba(63, 91, 83, 0.48);
-      border: 1px solid rgba(100, 150, 130, 0.38);
-      border-radius: 999px;
-      padding: 0.45rem 1.05rem;
-      width: fit-content;
-      backdrop-filter: blur(4px);
+      color: rgba(255, 255, 255, 0.65);
     }
 
     .hero h1 {
       color: white;
-      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.22);
+      font-weight: 300;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-rule {
+      width: 2.5rem;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.4);
+      margin: 0.25rem auto;
     }
 
     .hero-sub {
-      color: rgba(230, 240, 236, 0.9);
-      font-size: 1.05rem;
-      line-height: 1.75;
-      max-width: 50ch;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
+      font-weight: 300;
+      line-height: 1.9;
+      max-width: 48ch;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-top: var(--sp-1);
+      gap: 1rem;
+      justify-content: center;
+      margin-top: var(--sp-2);
+    }
+
+    /* ===== TRUST STRIP ===== */
+    .trust-strip {
+      background: var(--c-ink);
+      padding: 1.1rem 0;
+    }
+
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.5rem, 3vw, 3rem);
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-family: var(--f-sans);
+      font-size: var(--t-sm);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .trust-divider {
+      width: 1px;
+      height: 1rem;
+      background: rgba(255, 255, 255, 0.18);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .trust-divider { display: none; }
+      .trust-item { width: 100%; text-align: center; }
     }
 
     /* ===== SECTION ===== */
-    .section {
-      padding: var(--sp-7) 0;
-    }
+    .section { padding: var(--sp-7) 0; }
 
     .section-label {
-      font-size: 0.74rem;
-      font-weight: 700;
+      font-family: var(--f-sans);
+      font-size: var(--t-sm);
+      font-weight: 400;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--c-accent);
-      margin-bottom: 0.7rem;
+      color: var(--c-warm);
+      margin-bottom: var(--sp-2);
     }
 
-    .section-header {
-      margin-bottom: var(--sp-5);
-    }
-
+    .section-header { margin-bottom: var(--sp-6); }
     .section-header h2 { margin-bottom: var(--sp-2); }
 
     .section-header p {
       color: var(--c-muted);
-      font-size: 1.05rem;
-      line-height: 1.75;
-      max-width: 58ch;
+      font-size: var(--t-body);
+      font-weight: 300;
+      line-height: 1.9;
+      max-width: 54ch;
     }
 
     /* ===== GALLERY ===== */
@@ -376,91 +474,105 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: auto auto;
-      gap: var(--sp-3);
+      gap: 0.5rem;
     }
 
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: var(--r-md);
-      background: #e4ddd4;
-      box-shadow: var(--shadow-soft);
+      background: var(--c-surface-soft);
       cursor: pointer;
     }
 
-    .gallery-item:nth-child(1) { grid-column: 1 / 8; grid-row: 1; aspect-ratio: 16 / 10; }
+    .gallery-item:nth-child(1) { grid-column: 1 / 8;  grid-row: 1; aspect-ratio: 16 / 10; }
     .gallery-item:nth-child(2) { grid-column: 8 / 13; grid-row: 1; aspect-ratio: 3 / 2; }
-    .gallery-item:nth-child(3) { grid-column: 1 / 5; grid-row: 2; aspect-ratio: 3 / 2; }
+    .gallery-item:nth-child(3) { grid-column: 1 / 5;  grid-row: 2; aspect-ratio: 3 / 2; }
     .gallery-item:nth-child(4) { grid-column: 5 / 13; grid-row: 2; aspect-ratio: 16 / 10; }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item:hover img { transform: scale(1.05); }
 
     .gallery-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(16, 24, 21, 0.5), transparent 60%);
-      opacity: 0;
-      transition: opacity 300ms ease;
+      background: rgba(46, 42, 38, 0);
+      transition: background 400ms ease;
       display: flex;
       align-items: flex-end;
       padding: var(--sp-3);
     }
 
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-item:hover .gallery-overlay { background: rgba(46, 42, 38, 0.4); }
 
     .gallery-tag {
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-family: var(--f-sans);
+      font-size: var(--t-sm);
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: white;
-      background: rgba(63, 91, 83, 0.82);
-      border-radius: 999px;
-      padding: 0.3rem 0.8rem;
-      backdrop-filter: blur(4px);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 350ms ease, transform 350ms ease;
+    }
+
+    .gallery-item:hover .gallery-tag {
+      opacity: 1;
+      transform: none;
     }
 
     /* ===== SERVICES ===== */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
-      gap: var(--sp-3);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--c-line);
     }
 
     .service-card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-line);
-      border-radius: var(--r-md);
-      padding: var(--sp-4);
-      box-shadow: var(--shadow-soft);
-      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+      padding: clamp(2rem, 4vw, 3.5rem);
+      border-right: 1px solid var(--c-line);
+      border-bottom: 1px solid var(--c-line);
+      transition: background 300ms ease;
       display: grid;
-      gap: var(--sp-2);
+      gap: var(--sp-3);
     }
 
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lift);
-      border-color: #b8cec8;
+    .service-card:nth-child(2n)     { border-right: none; }
+    .service-card:nth-child(3),
+    .service-card:nth-child(4)      { border-bottom: none; }
+
+    .service-card:hover { background: var(--c-surface); }
+
+    .service-num {
+      font-family: var(--f-serif);
+      font-size: clamp(3.5rem, 2rem + 4vw, 6rem);
+      font-weight: 300;
+      color: var(--c-line);
+      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
-    .service-icon {
-      width: 2.65rem;
-      height: 2.65rem;
-      background: var(--c-accent-soft);
-      border-radius: 0.65rem;
-      display: grid;
-      place-items: center;
-      color: var(--c-accent);
+    .service-card h3 {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-ink);
     }
 
-    .service-card h3 { color: #18221d; }
-    .service-card p { color: #3c4740; font-size: 0.95rem; line-height: 1.65; }
+    .service-card p {
+      color: var(--c-muted);
+      font-size: var(--t-body);
+      font-weight: 300;
+      line-height: 1.85;
+    }
 
     /* ===== ABOUT ===== */
     .about-grid {
@@ -471,137 +583,124 @@
     }
 
     .about-visual {
-      border-radius: var(--r-lg);
       overflow: hidden;
+      aspect-ratio: 3 / 4;
       box-shadow: var(--shadow-deep);
-      aspect-ratio: 4 / 3;
     }
 
     .about-visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
     }
+
+    .about-visual:hover img { transform: scale(1.03); }
 
     .about-text h2 { margin-bottom: var(--sp-3); }
+    .about-text > p { color: var(--c-muted); font-weight: 300; line-height: 1.9; }
+    .about-text > p + p { margin-top: var(--sp-2); }
 
-    .about-text p {
-      color: var(--c-muted);
-      font-size: 1rem;
-      line-height: 1.78;
+    .about-pull {
+      margin: var(--sp-4) 0;
+      padding-left: var(--sp-3);
+      border-left: 1px solid var(--c-accent);
+      font-family: var(--f-serif);
+      font-size: clamp(1.3rem, 1rem + 1.2vw, 1.8rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--c-ink);
+      line-height: 1.45;
     }
 
-    .about-text p + p { margin-top: var(--sp-2); }
-
-    .value-list {
-      display: grid;
-      gap: var(--sp-2);
-      margin-top: var(--sp-4);
-    }
+    .value-list { display: grid; gap: var(--sp-2); margin-top: var(--sp-4); }
 
     .value-item {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.875rem;
       align-items: flex-start;
     }
 
     .value-dot {
-      width: 1.5rem;
-      height: 1.5rem;
-      background: var(--c-accent-soft);
-      border-radius: 50%;
+      width: 1.3rem;
+      height: 1.3rem;
+      border: 1px solid var(--c-accent);
       display: grid;
       place-items: center;
       flex-shrink: 0;
-      margin-top: 0.15rem;
+      margin-top: 0.2rem;
     }
 
-    .value-dot svg { width: 0.7rem; height: 0.7rem; color: var(--c-accent); }
+    .value-dot svg { width: 0.55rem; height: 0.55rem; color: var(--c-accent); }
 
     .value-item p {
-      font-size: 0.95rem;
-      color: #3a4540;
-      line-height: 1.65;
+      font-size: var(--t-body);
+      font-weight: 300;
+      color: var(--c-muted);
+      line-height: 1.7;
     }
 
     /* ===== PROCESS ===== */
     .process-section {
-      background: var(--c-surface-soft);
-      border-top: 1px solid var(--c-line);
-      border-bottom: 1px solid var(--c-line);
+      background: var(--c-ink);
     }
+
+    .process-section .section-label { color: rgba(255, 255, 255, 0.38); }
+    .process-section h2 { color: rgba(255, 255, 255, 0.95); }
+    .process-section .section-header p { color: rgba(255, 255, 255, 0.45); }
 
     .process-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--sp-6);
+      gap: var(--sp-7);
       align-items: start;
     }
 
-    .process-steps {
-      display: grid;
-      gap: 0;
-    }
+    .process-steps { display: grid; }
 
     .process-step {
-      display: flex;
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
       gap: var(--sp-3);
+      padding-bottom: var(--sp-4);
+      margin-bottom: var(--sp-4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .step-track {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
+    .process-step:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
     .step-num {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      background: var(--c-accent);
-      color: white;
-      font-weight: 700;
-      font-size: 0.9rem;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 14px rgba(63, 91, 83, 0.3);
-      position: relative;
-      z-index: 1;
-    }
-
-    .step-line {
-      width: 2px;
-      flex: 1;
-      min-height: 1.5rem;
-      background: linear-gradient(to bottom, var(--c-accent), rgba(216, 208, 195, 0.6));
-      margin: 0.25rem 0;
-    }
-
-    .process-step:last-child .step-line { display: none; }
-
-    .step-body {
-      padding: 0.2rem 0 var(--sp-4) 0;
+      font-family: var(--f-serif);
+      font-size: clamp(2.2rem, 1.5rem + 2vw, 3.2rem);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.15);
+      line-height: 1;
+      padding-top: 0.1rem;
     }
 
     .step-body h4 {
-      color: #18221d;
-      margin-bottom: 0.45rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
     }
 
     .step-body p {
-      color: var(--c-muted);
-      font-size: 0.95rem;
-      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: var(--t-body);
+      font-weight: 300;
+      line-height: 1.8;
     }
 
     .process-visual {
       position: relative;
-      border-radius: var(--r-lg);
       overflow: hidden;
       aspect-ratio: 4 / 5;
-      box-shadow: var(--shadow-deep);
     }
 
     .process-visual img {
@@ -615,25 +714,29 @@
       bottom: var(--sp-3);
       left: var(--sp-3);
       right: var(--sp-3);
-      background: rgba(255, 253, 250, 0.93);
-      backdrop-filter: blur(10px);
-      border-radius: var(--r-sm);
+      background: rgba(247, 244, 241, 0.94);
+      backdrop-filter: blur(12px);
       padding: var(--sp-2) var(--sp-3);
-      border: 1px solid rgba(216, 208, 195, 0.7);
+      border-left: 2px solid var(--c-accent);
     }
 
     .process-badge-label {
-      font-size: 0.72rem;
-      color: var(--c-accent);
-      font-weight: 700;
+      font-family: var(--f-sans);
+      font-size: var(--t-sm);
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      color: var(--c-accent);
     }
 
     .process-badge p {
-      font-size: 0.875rem;
+      font-family: var(--f-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 300;
       color: var(--c-ink);
-      margin-top: 0.2rem;
+      margin-top: 0.3rem;
+      line-height: 1.5;
     }
 
     /* ===== TESTIMONIALS ===== */
@@ -645,110 +748,102 @@
 
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--sp-3);
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-4);
     }
 
     .testimonial {
       background: var(--c-surface);
       border: 1px solid var(--c-line);
-      border-radius: var(--r-md);
-      padding: var(--sp-4);
-      box-shadow: var(--shadow-soft);
+      padding: clamp(1.75rem, 3vw, 2.75rem);
       display: grid;
-      gap: var(--sp-2);
+      gap: var(--sp-3);
       align-content: start;
     }
 
-    .stars {
-      display: flex;
-      gap: 2px;
-      color: #c09840;
+    .testimonial-quote-mark {
+      font-family: var(--f-serif);
+      font-size: 4.5rem;
+      line-height: 0.6;
+      color: var(--c-accent);
+      font-weight: 300;
+      opacity: 0.35;
     }
 
     .testimonial-quote {
-      font-size: 0.97rem;
-      line-height: 1.75;
-      color: #2c3832;
+      font-family: var(--f-serif);
+      font-size: clamp(1.1rem, 0.9rem + 0.5vw, 1.35rem);
       font-style: italic;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--c-ink);
     }
 
     .testimonial-meta {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding-top: var(--sp-2);
+      justify-content: space-between;
+      gap: var(--sp-2);
+      padding-top: var(--sp-3);
       border-top: 1px solid var(--c-line);
     }
 
-    .testimonial-avatar {
-      width: 2.2rem;
-      height: 2.2rem;
-      border-radius: 50%;
-      background: var(--c-accent-soft);
-      display: grid;
-      place-items: center;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--c-accent);
-      flex-shrink: 0;
-    }
-
     .testimonial-name {
-      font-weight: 600;
+      font-family: var(--f-sans);
       font-size: var(--t-sm);
-      color: #18221d;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-ink);
     }
 
     .testimonial-role {
-      font-size: 0.8rem;
+      font-size: var(--t-sm);
+      font-weight: 300;
       color: var(--c-muted);
+      margin-top: 0.2rem;
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+      color: var(--c-warm);
+      flex-shrink: 0;
     }
 
     /* ===== CTA BANNER ===== */
     .cta-banner {
-      background: linear-gradient(135deg, #1f2c27 0%, #141f1b 50%, #1c2e28 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-banner::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      right: -8%;
-      width: 48vw;
-      height: 200%;
-      background: radial-gradient(ellipse, rgba(63, 91, 83, 0.22), transparent 70%);
-      pointer-events: none;
+      background: var(--c-surface-soft);
+      border-top: 1px solid var(--c-line);
+      border-bottom: 1px solid var(--c-line);
     }
 
     .cta-inner {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
-      gap: var(--sp-5);
-      padding: clamp(3rem, 7vw, 5.5rem) 0;
-      position: relative;
-      z-index: 1;
+      gap: var(--sp-6);
+      padding: var(--sp-7) 0;
     }
 
     .cta-text h2 {
-      color: #edf3f0;
+      color: var(--c-ink);
       margin-bottom: var(--sp-2);
     }
 
     .cta-text p {
-      color: #96b0a8;
-      font-size: 1.05rem;
-      max-width: 48ch;
+      color: var(--c-muted);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.85;
+      max-width: 50ch;
     }
 
     /* ===== CONTACT ===== */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.65fr;
-      gap: var(--sp-6);
+      gap: var(--sp-7);
       align-items: start;
     }
 
@@ -756,8 +851,8 @@
 
     .contact-info > p {
       color: var(--c-muted);
-      font-size: 1rem;
-      line-height: 1.78;
+      font-weight: 300;
+      line-height: 1.9;
     }
 
     .contact-details {
@@ -769,8 +864,10 @@
     .contact-detail {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.875rem;
       font-size: var(--t-sm);
+      font-weight: 300;
+      letter-spacing: 0.04em;
       color: var(--c-muted);
     }
 
@@ -779,100 +876,109 @@
     .contact-form-card {
       background: var(--c-surface);
       border: 1px solid var(--c-line);
-      border-radius: var(--r-lg);
-      padding: var(--sp-5);
-      box-shadow: var(--shadow-soft);
+      padding: clamp(2rem, 4vw, 3.25rem);
     }
 
-    .form {
-      display: grid;
-      gap: var(--sp-3);
-    }
+    .form { display: grid; gap: var(--sp-4); }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--sp-2);
+      gap: var(--sp-3);
     }
 
-    .field {
-      display: grid;
-      gap: 0.45rem;
-    }
+    .field { display: grid; gap: 0.6rem; }
 
     .field label {
-      font-weight: 600;
-      font-size: 0.84rem;
-      color: #1a2520;
+      font-size: var(--t-sm);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-ink);
     }
 
+    /* Meridith Baer-style underline-only form fields */
     .field input,
     .field textarea,
     .field select {
       width: 100%;
-      padding: 0.82rem 0.95rem;
-      border: 1.5px solid #c5cfc9;
-      border-radius: var(--r-sm);
-      font-family: inherit;
-      font-size: 0.95rem;
-      background: #fff;
+      padding: 0.7rem 0;
+      border: none;
+      border-bottom: 1px solid var(--c-line);
+      border-radius: 0;
+      font-family: var(--f-sans);
+      font-size: var(--t-body);
+      font-weight: 300;
+      background: transparent;
       color: var(--c-ink);
-      transition: border-color 180ms ease, box-shadow 180ms ease;
+      transition: border-color 220ms ease;
       appearance: none;
     }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(116, 103, 90, 0.45); }
 
     .field input:focus,
     .field textarea:focus,
     .field select:focus {
       outline: none;
-      border-color: var(--c-accent);
-      box-shadow: 0 0 0 3px rgba(63, 91, 83, 0.12);
+      border-bottom-color: var(--c-ink);
     }
 
-    .field textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+    .field textarea {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.7;
+    }
 
     .form-note {
-      font-size: 0.82rem;
+      font-size: var(--t-sm);
+      font-weight: 300;
       color: var(--c-muted);
       text-align: center;
       margin-top: var(--sp-1);
+      letter-spacing: 0.04em;
     }
 
     /* ===== FOOTER ===== */
     .site-footer {
-      background: #161d1a;
-      color: #8a9e97;
-      padding: var(--sp-6) 0 var(--sp-4);
+      background: var(--c-ink);
+      padding: var(--sp-7) 0 var(--sp-4);
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
-      gap: var(--sp-5);
+      gap: var(--sp-6);
       padding-bottom: var(--sp-5);
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     }
 
-    .footer-brand h3 {
-      color: #d8e4df;
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
+    .footer-logo {
+      height: 2.2rem;
+      width: auto;
+      display: block;
+      margin-bottom: var(--sp-3);
+      filter: brightness(0) invert(1);
+      opacity: 0.55;
     }
 
     .footer-brand p {
-      font-size: 0.875rem;
-      line-height: 1.75;
-      max-width: 26ch;
+      font-size: var(--t-sm);
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.4);
+      max-width: 28ch;
     }
 
     .footer-col h4 {
-      color: #c2d1cb;
-      font-size: 0.78rem;
-      font-weight: 700;
+      font-family: var(--f-sans);
+      font-size: var(--t-sm);
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--sp-2);
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: var(--sp-3);
     }
 
     .footer-col ul {
@@ -880,16 +986,18 @@
       margin: 0;
       padding: 0;
       display: grid;
-      gap: 0.6rem;
+      gap: 0.75rem;
     }
 
     .footer-col a {
-      font-size: 0.875rem;
-      color: #8a9e97;
-      transition: color 180ms ease;
+      font-size: var(--t-sm);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.04em;
+      transition: color 220ms ease;
     }
 
-    .footer-col a:hover { color: #c2d1cb; }
+    .footer-col a:hover { color: rgba(255, 255, 255, 0.75); }
 
     .footer-bottom {
       padding-top: var(--sp-4);
@@ -898,14 +1006,17 @@
       align-items: center;
       flex-wrap: wrap;
       gap: var(--sp-2);
-      font-size: 0.82rem;
+      font-size: var(--t-sm);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.28);
+      letter-spacing: 0.04em;
     }
 
     /* ===== SCROLL FADE ===== */
     .fade-up {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
 
     .fade-up.visible {
@@ -922,14 +1033,23 @@
       .gallery-item:nth-child(4) { grid-column: 2 / 3; grid-row: 2; }
 
       .about-grid { grid-template-columns: 1fr; gap: var(--sp-5); }
-      .about-visual { max-width: 500px; }
+      .about-visual { aspect-ratio: 4 / 3; max-width: 500px; }
 
       .process-layout { grid-template-columns: 1fr; }
-      .process-visual { aspect-ratio: 16 / 9; max-width: 500px; }
+      .process-visual { aspect-ratio: 16 / 9; max-width: 520px; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
 
       .contact-grid { grid-template-columns: 1fr; }
+
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 720px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card:nth-child(n) { border-right: none; border-bottom: 1px solid var(--c-line); }
+      .service-card:last-child { border-bottom: none; }
     }
 
     @media (max-width: 600px) {
@@ -941,6 +1061,7 @@
       .cta-text p { max-width: 100%; }
 
       .form-row { grid-template-columns: 1fr; }
+
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
@@ -957,17 +1078,11 @@
 <body>
 
   <!-- ── NAVIGATION ─────────────────────────────────────────────── -->
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="container">
       <nav class="nav-inner" aria-label="Main navigation">
         <a class="brand" href="#" aria-label="Home by NKM homepage">
-          <span class="brand-icon" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-          </span>
-          Home by NKM
+          <img src="images/logo_transparent.png" alt="Home by NKM" />
         </a>
 
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation">
@@ -1002,59 +1117,75 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="container">
-        <div class="hero-inner">
-          <span class="eyebrow">For Homeowners &amp; Real Estate Agents</span>
-          <h1>Homes prepared with care.<br>Ready to show. Ready to live.</h1>
-          <p class="hero-sub">Home by NKM brings calm, detail-oriented guidance to home preparation — from thoughtful organization to buyer-ready staging. Your space, elevated.</p>
+        <div class="hero-inner fade-up">
+          <p class="eyebrow">Chicagoland Home Staging &amp; Design</p>
+          <h1>Homes prepared<br><em>with care.</em></h1>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <p class="hero-sub">Thoughtful staging, organization, and interior design guidance — for homeowners and agents who want results that feel right.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Request a Consultation</a>
-            <a class="btn btn-ghost" href="#process">See the process</a>
+            <a class="btn btn-ghost" href="#gallery">View Our Work</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ── TRUST STRIP ────────────────────────────────────────────── -->
+  <div class="trust-strip" aria-label="Credentials">
+    <div class="container">
+      <div class="trust-inner">
+        <span class="trust-item">150+ Homes Staged</span>
+        <span class="trust-divider" aria-hidden="true"></span>
+        <span class="trust-item">Chicagoland Area</span>
+        <span class="trust-divider" aria-hidden="true"></span>
+        <span class="trust-item">Homeowners &amp; Realtors</span>
+        <span class="trust-divider" aria-hidden="true"></span>
+        <span class="trust-item">5-Star Client Experience</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ── GALLERY ────────────────────────────────────────────────── -->
   <section class="section" id="gallery">
     <div class="container">
       <div class="section-header fade-up">
         <p class="section-label">Featured Work</p>
-        <h2>Spaces made calm, cohesive, and ready.</h2>
+        <h2>Spaces made calm,<br>cohesive, and ready.</h2>
         <p>Every project is shaped around how the people inside actually live — then refined for buyers who need to imagine themselves there.</p>
       </div>
       <div class="gallery-grid">
         <div class="gallery-item fade-up">
           <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&q=80"
-            alt="Bright open-plan living room with warm neutral tones, layered textiles, and curated bookshelves"
+            src="images/Living%20room.jpg"
+            alt="Bright, warm living room staged for listing"
             loading="lazy"
           />
           <div class="gallery-overlay"><span class="gallery-tag">Living Room</span></div>
         </div>
         <div class="gallery-item fade-up">
           <img
-            src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&h=500&fit=crop&q=80"
-            alt="Serene primary bedroom with linen bedding, soft lighting, and minimal accents"
+            src="images/bedroom.jpg"
+            alt="Serene primary bedroom with linen bedding and soft lighting"
             loading="lazy"
           />
           <div class="gallery-overlay"><span class="gallery-tag">Primary Bedroom</span></div>
         </div>
         <div class="gallery-item fade-up">
           <img
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop&q=80"
-            alt="Organized kitchen with open shelving, clean surfaces, and warm wood accents"
+            src="images/Children's%20room.jpg"
+            alt="Children's room styled for warmth and function"
             loading="lazy"
           />
-          <div class="gallery-overlay"><span class="gallery-tag">Kitchen</span></div>
+          <div class="gallery-overlay"><span class="gallery-tag">Children's Room</span></div>
         </div>
         <div class="gallery-item fade-up">
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop&q=80"
-            alt="Dining space with natural materials, warm light, and an elevated but approachable table setting"
+            src="images/dining%20room.jpg"
+            alt="Dining space with natural materials and an elevated table setting"
             loading="lazy"
           />
-          <div class="gallery-overlay"><span class="gallery-tag">Dining</span></div>
+          <div class="gallery-overlay"><span class="gallery-tag">Dining Room</span></div>
         </div>
       </div>
     </div>
@@ -1070,42 +1201,22 @@
       </div>
       <div class="services-grid">
         <div class="service-card fade-up">
-          <div class="service-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-          </div>
+          <div class="service-num" aria-hidden="true">01</div>
           <h3>Pre-Listing Preparation</h3>
           <p>Strategic walkthrough recommendations and targeted edits that help your home show clearly and feel cared for — without over-staging.</p>
         </div>
         <div class="service-card fade-up">
-          <div class="service-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
-              <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
-            </svg>
-          </div>
+          <div class="service-num" aria-hidden="true">02</div>
           <h3>Home Organization</h3>
           <p>Calm systems designed for real daily life — not just visual tidiness. Decluttering, storage solutions, and sustainable routines.</p>
         </div>
         <div class="service-card fade-up">
-          <div class="service-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
+          <div class="service-num" aria-hidden="true">03</div>
           <h3>Staging + Styling</h3>
           <p>Thoughtful finishing layers — furniture placement, art, textiles — that support flow, warmth, and buyer-ready presentation.</p>
         </div>
         <div class="service-card fade-up">
-          <div class="service-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
+          <div class="service-num" aria-hidden="true">04</div>
           <h3>Interior Design Support</h3>
           <p>Targeted guidance on layout, finishes, and furnishings. A cohesive, timeless look that holds up in photos and in person.</p>
         </div>
@@ -1119,7 +1230,7 @@
       <div class="about-grid">
         <div class="about-visual fade-up">
           <img
-            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&h=530&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&h=930&fit=crop&q=80"
             alt="Calm, well-organized living room with a warm and functional aesthetic"
             loading="lazy"
           />
@@ -1127,7 +1238,10 @@
         <div class="about-text fade-up">
           <p class="section-label">About Home by NKM</p>
           <h2>Function first.<br>Warmth always.</h2>
-          <p>Home by NKM grew from a healthcare perspective: environment shapes how people feel, think, and move through their day. Preparation isn't just about aesthetics — it's about reducing friction and restoring ease.</p>
+          <blockquote class="about-pull">
+            "Environment shapes how people feel, think, and move through their day."
+          </blockquote>
+          <p>Home by NKM grew from a healthcare perspective: preparation isn't just about aesthetics — it's about reducing friction and restoring ease.</p>
           <p>Every room is approached with respect for your timeline, budget, and energy. The result is intentional, warm, and grounded — never over-styled.</p>
           <div class="value-list">
             <div class="value-item">
@@ -1159,46 +1273,34 @@
     <div class="container">
       <div class="section-header fade-up">
         <p class="section-label">How It Works</p>
-        <h2>A structured, reassuring process.</h2>
+        <h2>A structured,<br>reassuring process.</h2>
         <p>Clear communication, practical pacing, and supportive guidance at every step.</p>
       </div>
       <div class="process-layout">
         <div class="process-steps">
           <div class="process-step fade-up">
-            <div class="step-track">
-              <div class="step-num">1</div>
-              <div class="step-line"></div>
-            </div>
+            <div class="step-num" aria-hidden="true">01</div>
             <div class="step-body">
               <h4>Initial Conversation</h4>
               <p>We review your goals, timeline, and where the home currently feels stuck — no pressure, just clarity.</p>
             </div>
           </div>
           <div class="process-step fade-up">
-            <div class="step-track">
-              <div class="step-num">2</div>
-              <div class="step-line"></div>
-            </div>
+            <div class="step-num" aria-hidden="true">02</div>
             <div class="step-body">
               <h4>Prioritized Plan</h4>
               <p>You receive clear, realistic recommendations sequenced by impact — so you always know what to do next.</p>
             </div>
           </div>
           <div class="process-step fade-up">
-            <div class="step-track">
-              <div class="step-num">3</div>
-              <div class="step-line"></div>
-            </div>
+            <div class="step-num" aria-hidden="true">03</div>
             <div class="step-body">
               <h4>Guided Implementation</h4>
               <p>We support decisions and execution throughout so progress stays steady and manageable, not overwhelming.</p>
             </div>
           </div>
           <div class="process-step fade-up">
-            <div class="step-track">
-              <div class="step-num">4</div>
-              <div class="step-line"></div>
-            </div>
+            <div class="step-num" aria-hidden="true">04</div>
             <div class="step-body">
               <h4>Final Refinements</h4>
               <p>We complete the small details that bring calm, cohesion, and readiness to your home.</p>
@@ -1214,7 +1316,7 @@
           />
           <div class="process-badge">
             <p class="process-badge-label">The result</p>
-            <p>A home that feels calm to live in and clear to present.</p>
+            <p>A home that feels calm to live in — and clear to present.</p>
           </div>
         </div>
       </div>
@@ -1230,70 +1332,70 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial fade-up">
-          <div class="stars" aria-label="5 out of 5 stars">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-quote">"NKM made our home feel peaceful, polished, and ready to list in a way that still felt like us. We weren't expecting how much lighter the house would feel."</p>
+          <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+          <p class="testimonial-quote">NKM made our home feel peaceful, polished, and ready to list in a way that still felt like us. We weren't expecting how much lighter the house would feel.</p>
           <div class="testimonial-meta">
-            <div class="testimonial-avatar" aria-hidden="true">SL</div>
             <div>
               <p class="testimonial-name">Sarah L.</p>
-              <p class="testimonial-role">Homeowner, Chicago IL</p>
+              <p class="testimonial-role">Homeowner · Chicago, IL</p>
+            </div>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
           </div>
         </div>
         <div class="testimonial fade-up">
-          <div class="stars" aria-label="5 out of 5 stars">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-quote">"The process was clear and supportive. Every change had purpose, and we always knew the next step. My clients were thrilled with how the home presented."</p>
+          <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+          <p class="testimonial-quote">The process was clear and supportive. Every change had purpose, and we always knew the next step. My clients were thrilled with how the home presented.</p>
           <div class="testimonial-meta">
-            <div class="testimonial-avatar" aria-hidden="true">MR</div>
             <div>
               <p class="testimonial-name">Mark R.</p>
-              <p class="testimonial-role">Realtor, North Shore</p>
+              <p class="testimonial-role">Realtor · North Shore</p>
+            </div>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
           </div>
         </div>
         <div class="testimonial fade-up">
-          <div class="stars" aria-label="5 out of 5 stars">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-quote">"We lived in clutter for years before NKM helped us see our home differently. Two weeks after staging, we accepted an offer above asking price."</p>
+          <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+          <p class="testimonial-quote">We lived in clutter for years before NKM helped us see our home differently. Two weeks after staging, we accepted an offer above asking price.</p>
           <div class="testimonial-meta">
-            <div class="testimonial-avatar" aria-hidden="true">JT</div>
             <div>
               <p class="testimonial-name">Jessica T.</p>
-              <p class="testimonial-role">Homeowner, Evanston IL</p>
+              <p class="testimonial-role">Homeowner · Evanston, IL</p>
+            </div>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
           </div>
         </div>
         <div class="testimonial fade-up">
-          <div class="stars" aria-label="5 out of 5 stars">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-quote">"What I appreciated most was how NKM worked around our busy schedule. Nothing felt rushed or forced — just calm, organized, impactful progress."</p>
+          <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+          <p class="testimonial-quote">What I appreciated most was how NKM worked around our busy schedule. Nothing felt rushed or forced — just calm, organized, impactful progress.</p>
           <div class="testimonial-meta">
-            <div class="testimonial-avatar" aria-hidden="true">DC</div>
             <div>
               <p class="testimonial-name">David C.</p>
-              <p class="testimonial-role">Homeowner, Lincoln Park</p>
+              <p class="testimonial-role">Homeowner · Lincoln Park</p>
+            </div>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
           </div>
         </div>
@@ -1306,10 +1408,10 @@
     <div class="container">
       <div class="cta-inner">
         <div class="cta-text fade-up">
-          <h2>Ready for calm, thoughtful next steps?</h2>
+          <h2>Ready for calm,<br>thoughtful next steps?</h2>
           <p>One conversation is enough to understand fit, scope, and timing. No pressure. No obligation.</p>
         </div>
-        <a class="btn btn-primary fade-up" href="#contact" style="white-space: nowrap;">Request a Consultation</a>
+        <a class="btn btn-outline fade-up" href="#contact">Request a Consultation</a>
       </div>
     </div>
   </section>
@@ -1324,14 +1426,14 @@
           <p>Share a bit about your space and what you're hoping for. We'll respond with honest options and clear next steps.</p>
           <div class="contact-details">
             <div class="contact-detail">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
               <span>hello@homebyNKM.com</span>
             </div>
             <div class="contact-detail">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
@@ -1353,7 +1455,7 @@
               </div>
             </div>
             <div class="field">
-              <label for="phone">Phone <span style="font-weight: 400; color: var(--c-muted);">(optional)</span></label>
+              <label for="phone">Phone <span style="font-weight: 300; color: var(--c-muted); text-transform: none; letter-spacing: 0;">(optional)</span></label>
               <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(312) 555-0100" />
             </div>
             <div class="field">
@@ -1371,7 +1473,7 @@
               <label for="message">Tell us about your space <span aria-hidden="true" style="color: #b83232;">*</span></label>
               <textarea id="message" name="message" required placeholder="What's your timeline, situation, or what's feeling stuck?"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Inquiry</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
           </form>
           <p class="form-note">We reply within 24–48 hours with clear, considerate options.</p>
         </div>
@@ -1384,7 +1486,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <h3>Home by NKM</h3>
+          <img src="images/logo_transparent.png" alt="Home by NKM" class="footer-logo" />
           <p>Calm, functional, sell-ready homes. Thoughtful guidance for homeowners and real estate partners.</p>
         </div>
         <div class="footer-col">
@@ -1414,6 +1516,12 @@
   </footer>
 
   <script>
+    // ── Header scroll behavior
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
     // ── Mobile nav toggle
     const toggle = document.getElementById('nav-toggle');
     const menu   = document.getElementById('nav-menu');
@@ -1448,7 +1556,7 @@
       }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
 
       fadeEls.forEach((el, i) => {
-        el.style.transitionDelay = (i % 4) * 75 + 'ms';
+        el.style.transitionDelay = (i % 4) * 80 + 'ms';
         obs.observe(el);
       });
     } else {
