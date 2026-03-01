@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful staging, organization, and interior design support for homeowners and real estate agents in Chicagoland." />
+  <meta name="description" content="Home by NKM creates calm, functional, sell-ready homes through thoughtful staging, organization, and interior design support for homeowners and real estate agents in the Greater Boston area." />
   <title>Home by NKM | Calm, Functional, Sell-Ready Homes</title>
 
   <!-- Cormorant Garamond (editorial serif) + Poppins (clean sans) -->
@@ -368,7 +368,27 @@
       place-items: center;
     }
 
+    .hero-brand {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 5rem;
+    }
+
+    .hero-logo-watermark {
+      position: absolute;
+      height: 9rem;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.12;
+      pointer-events: none;
+      user-select: none;
+    }
+
     .eyebrow {
+      position: relative;
+      z-index: 1;
       font-family: var(--f-sans);
       font-size: var(--t-sm);
       font-weight: 400;
@@ -1118,7 +1138,10 @@
     <div class="hero-content">
       <div class="container">
         <div class="hero-inner fade-up">
-          <p class="eyebrow">Chicagoland Home Staging &amp; Design</p>
+          <div class="hero-brand">
+            <img src="images/logo_transparent.png" class="hero-logo-watermark" aria-hidden="true" alt="" />
+            <p class="eyebrow">Home by NKM</p>
+          </div>
           <h1>Homes prepared<br><em>with care.</em></h1>
           <div class="hero-rule" aria-hidden="true"></div>
           <p class="hero-sub">Thoughtful staging, organization, and interior design guidance — for homeowners and agents who want results that feel right.</p>
@@ -1137,7 +1160,7 @@
       <div class="trust-inner">
         <span class="trust-item">150+ Homes Staged</span>
         <span class="trust-divider" aria-hidden="true"></span>
-        <span class="trust-item">Chicagoland Area</span>
+        <span class="trust-item">Greater Boston Area</span>
         <span class="trust-divider" aria-hidden="true"></span>
         <span class="trust-item">Homeowners &amp; Realtors</span>
         <span class="trust-divider" aria-hidden="true"></span>
@@ -1337,7 +1360,7 @@
           <div class="testimonial-meta">
             <div>
               <p class="testimonial-name">Sarah L.</p>
-              <p class="testimonial-role">Homeowner · Chicago, IL</p>
+              <p class="testimonial-role">Homeowner · Boston, MA</p>
             </div>
             <div class="stars" aria-label="5 out of 5 stars">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1354,7 +1377,7 @@
           <div class="testimonial-meta">
             <div>
               <p class="testimonial-name">Mark R.</p>
-              <p class="testimonial-role">Realtor · North Shore</p>
+              <p class="testimonial-role">Realtor · Greater Boston</p>
             </div>
             <div class="stars" aria-label="5 out of 5 stars">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1371,7 +1394,7 @@
           <div class="testimonial-meta">
             <div>
               <p class="testimonial-name">Jessica T.</p>
-              <p class="testimonial-role">Homeowner · Evanston, IL</p>
+              <p class="testimonial-role">Homeowner · Newton, MA</p>
             </div>
             <div class="stars" aria-label="5 out of 5 stars">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1388,7 +1411,7 @@
           <div class="testimonial-meta">
             <div>
               <p class="testimonial-name">David C.</p>
-              <p class="testimonial-role">Homeowner · Lincoln Park</p>
+              <p class="testimonial-role">Homeowner · Brookline, MA</p>
             </div>
             <div class="stars" aria-label="5 out of 5 stars">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1437,7 +1460,7 @@
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
-              <span>Chicagoland Area</span>
+              <span>Greater Boston Area</span>
             </div>
           </div>
         </div>
