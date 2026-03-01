@@ -368,7 +368,27 @@
       place-items: center;
     }
 
+    .hero-brand {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 5rem;
+    }
+
+    .hero-logo-watermark {
+      position: absolute;
+      height: 9rem;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.12;
+      pointer-events: none;
+      user-select: none;
+    }
+
     .eyebrow {
+      position: relative;
+      z-index: 1;
       font-family: var(--f-sans);
       font-size: var(--t-sm);
       font-weight: 400;
@@ -1118,7 +1138,10 @@
     <div class="hero-content">
       <div class="container">
         <div class="hero-inner fade-up">
-          <p class="eyebrow">Chicagoland Home Staging &amp; Design</p>
+          <div class="hero-brand">
+            <img src="images/logo_transparent.png" class="hero-logo-watermark" aria-hidden="true" alt="" />
+            <p class="eyebrow">Home by NKM</p>
+          </div>
           <h1>Homes prepared<br><em>with care.</em></h1>
           <div class="hero-rule" aria-hidden="true"></div>
           <p class="hero-sub">Thoughtful staging, organization, and interior design guidance — for homeowners and agents who want results that feel right.</p>
