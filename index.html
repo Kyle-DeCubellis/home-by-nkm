@@ -141,16 +141,14 @@
       gap: 1rem;
     }
 
-    .brand img {
-      height: 2.6rem;
-      width: auto;
+    .brand span {
       display: block;
-      transition: filter 500ms ease;
+      color: white;
+      transition: color 500ms ease;
     }
 
-    /* Logo is white over hero, normal once scrolled */
-    .site-header:not(.scrolled) .brand img {
-      filter: brightness(0) invert(1);
+    .site-header.scrolled .brand span {
+      color: var(--c-ink);
     }
 
     .nav-links {
@@ -1102,7 +1100,7 @@
     <div class="container">
       <nav class="nav-inner" aria-label="Main navigation">
         <a class="brand" href="#" aria-label="Haven &amp; Co. homepage">
-          <img src="images/logo_transparent.png" alt="Haven &amp; Co." />
+          <span style="font-family: var(--f-serif); font-size: 1.4rem; font-weight: 400; letter-spacing: 0.04em;">Haven &amp; Co.</span>
         </a>
 
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation">
@@ -1139,7 +1137,6 @@
       <div class="container">
         <div class="hero-inner fade-up">
           <div class="hero-brand">
-            <img src="images/logo_transparent.png" class="hero-logo-watermark" aria-hidden="true" alt="" />
             <p class="eyebrow">Haven &amp; Co.</p>
           </div>
           <h1>Homes prepared<br><em>with care.</em></h1>
@@ -1158,8 +1155,6 @@
   <div class="trust-strip" aria-label="Credentials">
     <div class="container">
       <div class="trust-inner">
-        <span class="trust-item">150+ Homes Prepared</span>
-        <span class="trust-divider" aria-hidden="true"></span>
         <span class="trust-item">Greater Boston Area</span>
         <span class="trust-divider" aria-hidden="true"></span>
         <span class="trust-item">Homeowners &amp; Realtors</span>
@@ -1440,7 +1435,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="images/logo_transparent.png" alt="Haven &amp; Co." class="footer-logo" />
+          <span class="footer-logo" style="font-family: var(--f-serif); font-size: 1.4rem; font-weight: 400; letter-spacing: 0.04em; color: rgba(255,255,255,0.55); display: block; margin-bottom: var(--sp-3);">Haven &amp; Co.</span>
           <p>Thoughtful preparation for homes that feel right — to live in, and to leave.</p>
         </div>
         <div class="footer-col">
